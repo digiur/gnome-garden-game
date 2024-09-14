@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8ry410fampqx"]
+
+[ext_resource type="PackedScene" uid="uid://bhcs54ofsg4f4" path="res://scenes/chunks/debug_chunk_a.tscn" id="1_373yo"]
+[ext_resource type="PackedScene" uid="uid://c8yq8s66rb660" path="res://scenes/chunks/debug_chunk_b.tscn" id="2_dsg7u"]
+[ext_resource type="PackedScene" uid="uid://bn7wdw1vounbu" path="res://scenes/mobs/spawners/spawner.tscn" id="4_6xq5i"]
+[ext_resource type="Script" path="res://scripts/debug_camera.gd" id="5_y6io2"]
+
+[node name="Game" type="Node"]
+
+[node name="Chunks" type="Node" parent="."]
+
+[node name="Chunk" parent="Chunks" instance=ExtResource("1_373yo")]
+
+[node name="Chunk2" parent="Chunks" instance=ExtResource("2_dsg7u")]
+position = Vector2(1856, 1024)
+
+[node name="Chunk3" parent="Chunks" instance=ExtResource("1_373yo")]
+position = Vector2(3040, 1088)
+
+[node name="Chunk4" parent="Chunks" instance=ExtResource("2_dsg7u")]
+position = Vector2(2528, 2272)
+
+[node name="Chunk5" parent="Chunks" instance=ExtResource("2_dsg7u")]
+position = Vector2(2304, 3072)
+
+[node name="Chunk6" parent="Chunks" instance=ExtResource("2_dsg7u")]
+position = Vector2(1184, 2720)
+
+[node name="Chunk7" parent="Chunks" instance=ExtResource("1_373yo")]
+position = Vector2(-416, 1952)
+
+[node name="Chunk8" parent="Chunks" instance=ExtResource("1_373yo")]
+position = Vector2(-2048, 1280)
+
+[node name="Chunk9" parent="Chunks" instance=ExtResource("2_dsg7u")]
+position = Vector2(-1760, 704)
+
+[node name="Chunk10" parent="Chunks" instance=ExtResource("1_373yo")]
+position = Vector2(-1792, -480)
+
+[node name="Spawners" type="Node" parent="."]
+
+[node name="Spawner" parent="Spawners" instance=ExtResource("4_6xq5i")]
+
+[node name="AttackTarget" parent="Spawners/Spawner" index="0"]
+position = Vector2(3648, 2016)
+
+[node name="Spawn" parent="Spawners/Spawner" index="1"]
+position = Vector2(160, 192)
+
+[node name="Spawner2" parent="Spawners" instance=ExtResource("4_6xq5i")]
+
+[node name="AttackTarget" parent="Spawners/Spawner2" index="0"]
+position = Vector2(-1600, 960)
+
+[node name="Spawn" parent="Spawners/Spawner2" index="1"]
+position = Vector2(3616, 1248)
+
+[node name="Spawner3" parent="Spawners" instance=ExtResource("4_6xq5i")]
+
+[node name="AttackTarget" parent="Spawners/Spawner3" index="0"]
+position = Vector2(192, 2560)
+
+[node name="Spawn" parent="Spawners/Spawner3" index="1"]
+position = Vector2(1696, 160)
+
+[node name="Spawner4" parent="Spawners" instance=ExtResource("4_6xq5i")]
+
+[node name="AttackTarget" parent="Spawners/Spawner4" index="0"]
+position = Vector2(192, 2560)
+
+[node name="Spawn" parent="Spawners/Spawner4" index="1"]
+position = Vector2(1696, 160)
+
+[node name="Spawner5" parent="Spawners" instance=ExtResource("4_6xq5i")]
+
+[node name="AttackTarget" parent="Spawners/Spawner5" index="0"]
+position = Vector2(1760, 2528)
+
+[node name="Spawn" parent="Spawners/Spawner5" index="1"]
+position = Vector2(608, 928)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+script = ExtResource("5_y6io2")
+speed = 500.0
+
+[editable path="Spawners/Spawner"]
+[editable path="Spawners/Spawner2"]
+[editable path="Spawners/Spawner3"]
+[editable path="Spawners/Spawner4"]
+[editable path="Spawners/Spawner5"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://cay2m6mcktqdw"]
+
+[ext_resource type="Script" path="res://scripts/debug_ui.gd" id="1_ilyf4"]
+
+[node name="DebugMenu" type="CanvasLayer"]
+layer = 99
+script = ExtResource("1_ilyf4")
+scene_files = Array[String](["res://scenes/main.tscn", "res://scenes/game.tscn"])
+
+[node name="MenuBar" type="MenuBar" parent="."]
+offset_right = 103.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Scene" type="PopupMenu" parent="MenuBar"]
+unique_name_in_owner = true
+title = "Levels"
+
+[node name="Chunk" type="PopupMenu" parent="MenuBar"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+title = "Levels"
+
+[connection signal="id_pressed" from="MenuBar/Scene" to="." method="_on_scenes_menu_id_pressed"]
+[connection signal="id_pressed" from="MenuBar/Chunk" to="." method="_on_chunk_id_pressed"]
