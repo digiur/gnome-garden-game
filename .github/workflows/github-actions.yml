@@ -1,0 +1,52 @@
+name: Publish to itch.io
+run-name: ${{ github.actor }} is publishing a new version! 🚀
+on:
+  push:
+    branches:
+      - 'main'
+defaults:
+  run:
+    shell: bash
+jobs:
+  Build-and-Publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Repository
+        uses: actions/checkout@v4
+
+      - name: Download Godot Engine & Templates
+        run: |
+          wget -q https://downloads.tuxfamily.org/godotengine/4.4/dev2/Godot_v4.4-dev2_linux.x86_64.zip
+          wget -q https://downloads.tuxfamily.org/godotengine/4.4/dev2/Godot_v4.4-dev2_export_templates.tpz
+
+      - name: Extract Godot Engine & Templates
+        run: |
+          unzip Godot_v4.4-dev2_linux.x86_64.zip
+          unzip Godot_v4.4-dev2_export_templates.tpz
+
+      - name: Remove Downloaded Zip Packages
+        run: |
+          rm Godot_v4.4-dev2_linux.x86_64.zip
+          rm Godot_v4.4-dev2_export_templates.tpz
+
+      - name: Set Up Environment
+        run: |
+          mkdir -p ~/.local/share/godot/export_templates/4.4.dev2
+          mv templates/* ~/.local/share/godot/export_templates/4.4.dev2
+          mkdir -p builds/html5
+
+      - name: Export Godot Project to HTML
+        run: |
+          ./Godot_v4.4-dev2_linux.x86_64 --headless --path . --export-release Web builds/html5/index.html
+
+      - name: Download itch.io Butler
+        run: |
+          curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip
+          chmod +x butler
+          ./butler -V
+
+      - name: Itchio Butler Go!
+        env:
+          BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
+        run: ./butler push builds/html5 digiur/gnome-garden-game:html5
