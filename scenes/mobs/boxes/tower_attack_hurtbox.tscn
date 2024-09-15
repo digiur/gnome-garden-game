@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmwgf4q3rtapr"]
+
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="1_dohm1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1m8iu"]
+radius = 15.0
+
+[node name="TowerAttackHurtbox" type="Area2D"]
+collision_layer = 16384
+collision_mask = 2048
+script = ExtResource("1_dohm1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1m8iu")
+debug_color = Color(0.858824, 0.364706, 0, 0.305882)
