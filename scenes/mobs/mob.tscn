@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctpbfg2lsw6gm"]
+[gd_scene load_steps=19 format=3 uid="uid://ctpbfg2lsw6gm"]
 
 [ext_resource type="Script" path="res://scripts/mob.gd" id="1_vv60s"]
 [ext_resource type="Texture2D" uid="uid://b32nlkea8qijq" path="res://assets/units/gnome/gnome_walk.png" id="2_g102s"]
-[ext_resource type="Material" uid="uid://daecbtbncqcw" path="res://resources/shaders/selected_shader_material.tres" id="2_jfhx6"]
-[ext_resource type="PackedScene" uid="uid://dw2vuxmmvql5j" path="res://scenes/mobs/boxes/mob_hitbox.tscn" id="4_wiwl2"]
-[ext_resource type="Script" path="res://scripts/health.gd" id="5_guith"]
+[ext_resource type="Script" path="res://scenes/mobs/randomize_start_frame.gd" id="3_gc10i"]
+[ext_resource type="Script" path="res://scripts/health_points.gd" id="3_wb5gs"]
+[ext_resource type="Script" path="res://scenes/mobs/hit_box.gd" id="5_doywu"]
+[ext_resource type="Script" path="res://scenes/mobs/shield_points.gd" id="6_64dsx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iykgg"]
 atlas = ExtResource("2_g102s")
@@ -84,6 +85,9 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_v1ry2"]
+radius = 50.0
+
 [node name="Gnome" type="PathFollow2D"]
 y_sort_enabled = true
 rotates = false
@@ -94,16 +98,39 @@ script = ExtResource("1_vv60s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 y_sort_enabled = true
-material = ExtResource("2_jfhx6")
 sprite_frames = SubResource("SpriteFrames_t1exv")
 autoplay = "default"
 frame_progress = 0.636753
+script = ExtResource("3_gc10i")
 
-[node name="Hitbox" parent="." instance=ExtResource("4_wiwl2")]
-position = Vector2(0, -3)
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("5_doywu")
 
-[node name="HealthPoints" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("5_guith")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_v1ry2")
 
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[node name="HealthPoints" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = -56.0
+offset_right = 47.0
+offset_bottom = -33.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Gnome Mob"
+horizontal_alignment = 1
+script = ExtResource("3_wb5gs")
+
+[node name="ShieldPoints" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = -168.0
+offset_right = -49.0
+offset_bottom = -145.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Gnome Mob"
+horizontal_alignment = 1
+script = ExtResource("6_64dsx")

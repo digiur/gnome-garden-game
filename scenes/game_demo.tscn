@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bhcs54ofsg4f4" path="res://scenes/chunks/debug_chunk_a.tscn" id="1_pl3ro"]
 [ext_resource type="PackedScene" uid="uid://bn7wdw1vounbu" path="res://scenes/mobs/spawners/spawner.tscn" id="3_33pif"]
 [ext_resource type="Script" path="res://scripts/debug_camera.gd" id="4_jenmu"]
-[ext_resource type="PackedScene" uid="uid://d08qsqikc146w" path="res://towers/tower.tscn" id="4_u6r0y"]
+[ext_resource type="PackedScene" uid="uid://d08qsqikc146w" path="res://scenes/towers/tower.tscn" id="4_u6r0y"]
 
 [node name="Game" type="Node"]
 
