@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d08qsqikc146w"]
+
+[ext_resource type="Script" path="res://scripts/tower.gd" id="1_8fl8w"]
+[ext_resource type="PackedScene" uid="uid://nm07xnw5y0di" path="res://scenes/mobs/boxes/tower_range.tscn" id="2_gmw1h"]
+[ext_resource type="Texture2D" uid="uid://c45ncw5eyxcpv" path="res://assets/towers/plant_arrowroot.png" id="3_m76kp"]
+
+[node name="Tower" type="Node2D"]
+script = ExtResource("1_8fl8w")
+
+[node name="TowerRange" parent="." instance=ExtResource("2_gmw1h")]
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+process_callback = 0
+wait_time = 2.0
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_m76kp")
+
+[connection signal="area_entered" from="TowerRange" to="." method="_on_tower_range_area_entered"]
+[connection signal="area_exited" from="TowerRange" to="." method="_on_tower_range_area_exited"]

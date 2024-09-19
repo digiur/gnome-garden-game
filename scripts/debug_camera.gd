@@ -13,5 +13,5 @@ func _physics_process(delta):
 	if Input.is_action_pressed("camera_right"):
 		position += Vector2.RIGHT * speed * delta
 
-	if Input.is_action_pressed("camera_laft"):
+	if Input.is_action_pressed("camera_left"):
 		position += Vector2.LEFT * speed * delta
