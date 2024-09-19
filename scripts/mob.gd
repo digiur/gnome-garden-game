@@ -32,3 +32,8 @@ func select() -> void:
 func deselect() -> void:
 		anim_sprite.use_parent_material = true
 		is_selected = false
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area is HurtBox:
+		queue_free()

@@ -5,7 +5,7 @@
 [node name="DebugMenu" type="CanvasLayer"]
 layer = 99
 script = ExtResource("1_ilyf4")
-scene_files = Array[String](["res://scenes/main.tscn", "res://scenes/game.tscn"])
+scene_files = Array[String](["res://scenes/main.tscn", "res://scenes/game.tscn", "res://scenes/game_demo.tscn"])
 
 [node name="MenuBar" type="MenuBar" parent="."]
 offset_right = 103.0

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://uniep8hu2f5k"]
+
+[ext_resource type="PackedScene" uid="uid://bhcs54ofsg4f4" path="res://scenes/chunks/debug_chunk_a.tscn" id="1_pl3ro"]
+[ext_resource type="PackedScene" uid="uid://bn7wdw1vounbu" path="res://scenes/mobs/spawners/spawner.tscn" id="3_33pif"]
+[ext_resource type="Script" path="res://scripts/debug_camera.gd" id="4_jenmu"]
+[ext_resource type="PackedScene" uid="uid://d08qsqikc146w" path="res://towers/tower.tscn" id="4_u6r0y"]
+
+[node name="Game" type="Node"]
+
+[node name="Chunks" type="Node" parent="."]
+
+[node name="Chunk" parent="Chunks" instance=ExtResource("1_pl3ro")]
+
+[node name="Spawners" type="Node" parent="."]
+
+[node name="Spawner" parent="Spawners" instance=ExtResource("3_33pif")]
+
+[node name="AttackTarget" parent="Spawners/Spawner" index="0"]
+position = Vector2(1632, 160)
+
+[node name="Spawn" parent="Spawners/Spawner" index="1"]
+position = Vector2(32, 32)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+script = ExtResource("4_jenmu")
+speed = 500.0
+
+[node name="Towers" type="Node" parent="."]
+
+[node name="Tower" parent="Towers" instance=ExtResource("4_u6r0y")]
+position = Vector2(192, 192)
+
+[node name="Tower2" parent="Towers" instance=ExtResource("4_u6r0y")]
+position = Vector2(768, 96)
+
+[node name="Tower3" parent="Towers" instance=ExtResource("4_u6r0y")]
+position = Vector2(192, 576)
+
+[editable path="Spawners/Spawner"]
