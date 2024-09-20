@@ -1,6 +1,6 @@
 extends Camera2D
 
-@export var speed: float = 250.0
+@export var speed: float = 2500.0
 
 func _physics_process(delta):
 
@@ -15,3 +15,6 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("camera_left"):
 		position += Vector2.LEFT * speed * delta
+
+	if Input.is_action_pressed("camera_reset"):
+		position = Vector2.ZERO

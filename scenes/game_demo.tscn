@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://uniep8hu2f5k"]
+[gd_scene load_steps=8 format=3 uid="uid://uniep8hu2f5k"]
 
 [ext_resource type="PackedScene" uid="uid://bhcs54ofsg4f4" path="res://scenes/chunks/debug_chunk_a.tscn" id="1_pl3ro"]
 [ext_resource type="PackedScene" uid="uid://bn7wdw1vounbu" path="res://scenes/mobs/spawners/spawner.tscn" id="3_33pif"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://d08qsqikc146w" path="res://scenes/towers/tower.tscn" id="4_u6r0y"]
 [ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="5_baga4"]
 [ext_resource type="Texture2D" uid="uid://cdm14hgecsegf" path="res://assets/wizards/wizard.png" id="6_6pp5o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tyr00"]
+radius = 139.11
+height = 429.59
 
 [node name="Game" type="Node"]
 
@@ -23,15 +27,10 @@ position = Vector2(1632, 160)
 [node name="Spawn" parent="Spawners/Spawner" index="1"]
 position = Vector2(32, 32)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-script = ExtResource("4_jenmu")
-speed = 500.0
-
 [node name="Towers" type="Node" parent="."]
 
 [node name="Tower" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(192, 192)
+position = Vector2(560, 800)
 
 [node name="Tower2" parent="Towers" instance=ExtResource("4_u6r0y")]
 position = Vector2(768, 96)
@@ -39,15 +38,21 @@ position = Vector2(768, 96)
 [node name="Tower3" parent="Towers" instance=ExtResource("4_u6r0y")]
 position = Vector2(192, 576)
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Node2D"]
-scale = Vector2(0.5, 0.5)
+[node name="Player" type="CharacterBody2D" parent="."]
+scale = Vector2(0.25, 0.25)
 script = ExtResource("5_baga4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CharacterBody2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = ExtResource("6_6pp5o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 32)
+shape = SubResource("CapsuleShape2D_tyr00")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("4_jenmu")
 
 [editable path="Spawners/Spawner"]
