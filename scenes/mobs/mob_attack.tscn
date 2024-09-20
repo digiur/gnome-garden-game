@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj6hh6hmyadg1"]
-
-[ext_resource type="Script" path="res://scripts/attack.gd" id="1_btwn8"]
-[ext_resource type="PackedScene" uid="uid://c41yijg0q1epb" path="res://scenes/mobs/boxes/mob_attack_hurtbox.tscn" id="2_025d6"]
-
-[node name="MobAttack" type="Node2D"]
-script = ExtResource("1_btwn8")
-
-[node name="MobAttackHurtbox" parent="." instance=ExtResource("2_025d6")]

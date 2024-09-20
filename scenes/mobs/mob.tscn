@@ -3,8 +3,7 @@
 [ext_resource type="Script" path="res://scripts/mob.gd" id="1_vv60s"]
 [ext_resource type="Texture2D" uid="uid://b32nlkea8qijq" path="res://assets/units/gnome/gnome_walk.png" id="2_g102s"]
 [ext_resource type="Material" uid="uid://daecbtbncqcw" path="res://resources/shaders/selected_shader_material.tres" id="2_jfhx6"]
-[ext_resource type="PackedScene" uid="uid://dw2vuxmmvql5j" path="res://scenes/mobs/boxes/mob_hitbox.tscn" id="4_wiwl2"]
-[ext_resource type="Script" path="res://scripts/health.gd" id="5_guith"]
+[ext_resource type="Script" path="res://hitbox.gd" id="4_t4gdv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iykgg"]
 atlas = ExtResource("2_g102s")
@@ -84,6 +83,8 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dg8n1"]
+
 [node name="Gnome" type="PathFollow2D"]
 y_sort_enabled = true
 rotates = false
@@ -99,11 +100,10 @@ sprite_frames = SubResource("SpriteFrames_t1exv")
 autoplay = "default"
 frame_progress = 0.636753
 
-[node name="Hitbox" parent="." instance=ExtResource("4_wiwl2")]
-position = Vector2(0, -3)
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2048
+collision_mask = 0
+script = ExtResource("4_t4gdv")
 
-[node name="HealthPoints" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("5_guith")
-
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_dg8n1")

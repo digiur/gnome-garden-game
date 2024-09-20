@@ -1,22 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://d08qsqikc146w"]
+[gd_scene load_steps=6 format=3 uid="uid://d08qsqikc146w"]
 
 [ext_resource type="Script" path="res://scripts/tower.gd" id="1_8fl8w"]
-[ext_resource type="PackedScene" uid="uid://nm07xnw5y0di" path="res://scenes/mobs/boxes/tower_range.tscn" id="2_gmw1h"]
 [ext_resource type="Texture2D" uid="uid://c45ncw5eyxcpv" path="res://assets/towers/plant_arrowroot.png" id="3_m76kp"]
+[ext_resource type="Script" path="res://scenes/towers/targeting_area.gd" id="3_nu84b"]
+[ext_resource type="Script" path="res://scenes/towers/attack_timer.gd" id="3_o33u1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iripf"]
+radius = 200.0
 
 [node name="Tower" type="Node2D"]
 script = ExtResource("1_8fl8w")
 
-[node name="TowerRange" parent="." instance=ExtResource("2_gmw1h")]
-
-[node name="Timer" type="Timer" parent="."]
-unique_name_in_owner = true
-process_callback = 0
-wait_time = 2.0
-one_shot = true
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_m76kp")
 
-[connection signal="area_entered" from="TowerRange" to="." method="_on_tower_range_area_entered"]
-[connection signal="area_exited" from="TowerRange" to="." method="_on_tower_range_area_exited"]
+[node name="TargetingArea" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 2048
+script = ExtResource("3_nu84b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetingArea"]
+shape = SubResource("CircleShape2D_iripf")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 1.77
+one_shot = true
+autostart = true
+script = ExtResource("3_o33u1")
+
+[connection signal="area_entered" from="TargetingArea" to="TargetingArea" method="_on_area_entered"]
+[connection signal="area_exited" from="TargetingArea" to="TargetingArea" method="_on_area_exited"]
