@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://b3ykhxf4b11qm"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://b3ykhxf4b11qm"]
 
-[ext_resource type="Texture2D" uid="uid://c8684ae6sl34f" path="res://assets/environments/hierachry-grid.png" id="1_re65i"]
-[ext_resource type="Texture2D" uid="uid://cn728bx08qmaf" path="res://assets/environments/ruins/grass-light-transp.png" id="1_uyg2t"]
-[ext_resource type="Texture2D" uid="uid://cbkk4iovn71ht" path="res://assets/environments/ruins/grass-mid_tone-transp.png" id="2_orfmn"]
-[ext_resource type="Texture2D" uid="uid://bp4qbflwsamf1" path="res://assets/environments/ruins/grass-dark-transp.png" id="3_uj7ve"]
-[ext_resource type="Texture2D" uid="uid://dx64fd5d5cxfu" path="res://assets/environments/ruins/grass-extra_dark-transp.png" id="4_v2x5i"]
+[ext_resource type="Texture2D" uid="uid://c8684ae6sl34f" path="res://assets/environments/hierachry-grid.png" id="1_00adi"]
+[ext_resource type="Texture2D" uid="uid://cn728bx08qmaf" path="res://assets/environments/ruins/grass-light-transp.png" id="2_owusv"]
+[ext_resource type="Texture2D" uid="uid://cbkk4iovn71ht" path="res://assets/environments/ruins/grass-mid_tone-transp.png" id="3_857tq"]
+[ext_resource type="Texture2D" uid="uid://bp4qbflwsamf1" path="res://assets/environments/ruins/grass-dark-transp.png" id="4_km2ja"]
+[ext_resource type="Texture2D" uid="uid://dx64fd5d5cxfu" path="res://assets/environments/ruins/grass-extra_dark-transp.png" id="5_dvg7f"]
+[ext_resource type="Texture2D" uid="uid://c661tumdv74b5" path="res://assets/environments/mustard.png" id="6_aici6"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_rl76n"]
 tile_data = PackedInt32Array(0, 4, 7, 65536, 4, 9, 1, 196612, 6, 65537, 262148, 9)
@@ -13,7 +14,7 @@ tile_data = PackedInt32Array(0, 4, 7, 65536, 4, 9, 1, 196612, 6, 65537, 262148, 
 tile_data = PackedInt32Array(65536, 4, 2, 131072, 65540, 5, 1, 65540, 6, 65537, 65540, 2, 131073, 65540, 9, 196609, 65540, 10, 2, 262148, 2, 65538, 196612, 2, 131074, 196612, 4, 196610, 262148, 4, 65539, 196612, 1, 131075, 262148, 4)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opu3i"]
-texture = ExtResource("1_re65i")
+texture = ExtResource("1_00adi")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -21,7 +22,7 @@ texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rlsm4"]
-texture = ExtResource("1_uyg2t")
+texture = ExtResource("2_owusv")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 0:1/0/terrain_set = 0
@@ -1187,7 +1188,7 @@ texture_region_size = Vector2i(32, 32)
 3:10/0/terrains_peering_bit/top_left_corner = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xft1h"]
-texture = ExtResource("2_orfmn")
+texture = ExtResource("3_857tq")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 0:1/0/terrain_set = 0
@@ -2353,7 +2354,7 @@ texture_region_size = Vector2i(32, 32)
 3:10/0/terrains_peering_bit/top_left_corner = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vutkb"]
-texture = ExtResource("3_uj7ve")
+texture = ExtResource("4_km2ja")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 0:1/0/terrain_set = 0
@@ -3532,7 +3533,7 @@ texture_region_size = Vector2i(32, 32)
 3:10/0/terrains_peering_bit/top_left_corner = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0u7g2"]
-texture = ExtResource("4_v2x5i")
+texture = ExtResource("5_dvg7f")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 0:1/0/terrain_set = 0
@@ -4724,8 +4725,16 @@ texture_region_size = Vector2i(32, 32)
 4:10/0/terrains_peering_bit/top_left_corner = 3
 4:10/0/terrains_peering_bit/top_right_corner = 3
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xqhte"]
+texture = ExtResource("6_aici6")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
 [resource]
 tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 64
+physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 1
 terrain_set_0/terrain_0/name = "Grass Light"
 terrain_set_0/terrain_0/color = Color(1.34766e-06, 0.754046, 0.370601, 1)
@@ -4740,5 +4749,6 @@ sources/2 = SubResource("TileSetAtlasSource_xft1h")
 sources/3 = SubResource("TileSetAtlasSource_vutkb")
 sources/4 = SubResource("TileSetAtlasSource_0u7g2")
 sources/0 = SubResource("TileSetAtlasSource_opu3i")
+sources/5 = SubResource("TileSetAtlasSource_xqhte")
 pattern_0 = SubResource("TileMapPattern_rl76n")
 pattern_1 = SubResource("TileMapPattern_jhwvl")

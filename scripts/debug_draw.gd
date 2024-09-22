@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+class_name DebugDraw extends Node2D
 
 @export var circle_nodes: Array[Node2D] = []
 @export var palete: = [Color.WEB_GREEN, Color.WEB_MAROON, Color.WEB_PURPLE]

@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cac373cas334y"]
+[gd_scene load_steps=8 format=3 uid="uid://cac373cas334y"]
 
-[ext_resource type="Script" path="res://scripts/ui_grid_background.gd" id="1_001ow"]
+[ext_resource type="Script" path="res://scripts/grid_background.gd" id="1_001ow"]
+[ext_resource type="Material" uid="uid://d3qfslmggbtqf" path="res://resources/shaders/parallax_shader_material.tres" id="2_amxwm"]
 [ext_resource type="Texture2D" uid="uid://c8684ae6sl34f" path="res://assets/environments/hierachry-grid.png" id="2_y7pgd"]
 [ext_resource type="Script" path="res://scripts/center_to_rect.gd" id="3_pplrp"]
 [ext_resource type="Script" path="res://scripts/resize_to_rect.gd" id="4_34bmb"]
+[ext_resource type="Script" path="res://scenes/ui/texture_rect_parallax.gd" id="4_idpb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43j5k"]
-size = Vector2(1152, 648)
+size = Vector2(1280, 720)
 
 [node name="Background" type="CanvasLayer"]
 layer = -99
@@ -14,6 +16,10 @@ script = ExtResource("1_001ow")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 unique_name_in_owner = true
+light_mask = 513
+texture_filter = 1
+texture_repeat = 2
+material = ExtResource("2_amxwm")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,10 +27,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_y7pgd")
 stretch_mode = 1
+script = ExtResource("4_idpb7")
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(576, 324)
+position = Vector2(640, 360)
 monitoring = false
 monitorable = false
 script = ExtResource("3_pplrp")

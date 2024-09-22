@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctpbfg2lsw6gm"]
+[gd_scene load_steps=19 format=3 uid="uid://ctpbfg2lsw6gm"]
 
 [ext_resource type="Script" path="res://scripts/mob.gd" id="1_vv60s"]
 [ext_resource type="Texture2D" uid="uid://b32nlkea8qijq" path="res://assets/units/gnome/gnome_walk.png" id="2_g102s"]
 [ext_resource type="Material" uid="uid://daecbtbncqcw" path="res://resources/shaders/selected_shader_material.tres" id="2_jfhx6"]
-[ext_resource type="Script" path="res://hitbox.gd" id="4_t4gdv"]
+[ext_resource type="Script" path="res://scripts/target.gd" id="4_t4gdv"]
+[ext_resource type="Script" path="res://scripts/health_points.gd" id="5_eathq"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="6_qf8mo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iykgg"]
 atlas = ExtResource("2_g102s")
@@ -85,7 +87,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dg8n1"]
 
-[node name="Gnome" type="PathFollow2D"]
+[node name="Mob" type="PathFollow2D"]
 y_sort_enabled = true
 rotates = false
 cubic_interp = false
@@ -100,10 +102,21 @@ sprite_frames = SubResource("SpriteFrames_t1exv")
 autoplay = "default"
 frame_progress = 0.636753
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Target" type="Area2D" parent="."]
 collision_layer = 2048
 collision_mask = 0
 script = ExtResource("4_t4gdv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target"]
 shape = SubResource("CircleShape2D_dg8n1")
+
+[node name="HealthPoints" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_eathq")
+
+[node name="HealthBar" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("6_qf8mo")
+
+[connection signal="health_depleted" from="HealthPoints" to="." method="_on_health_points_health_depleted"]

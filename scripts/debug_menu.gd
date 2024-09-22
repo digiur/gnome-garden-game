@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name DebugMenu extends CanvasLayer
 
 @onready var scene_menu: PopupMenu = %Scene
 @onready var chunk_menu: PopupMenu = %Chunk
