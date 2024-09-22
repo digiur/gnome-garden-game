@@ -29,19 +29,22 @@ position = Vector2(48, 48)
 [node name="Towers" type="Node" parent="."]
 
 [node name="Tower4" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1136, 272)
+position = Vector2(882, 38)
 
 [node name="Tower3" parent="Towers" instance=ExtResource("4_u6r0y")]
 position = Vector2(1136, 464)
 
 [node name="Tower5" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1136, 656)
+position = Vector2(1094, 33)
 
 [node name="Tower6" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1136, 848)
+position = Vector2(1535, 218)
+
+[node name="Tower7" parent="Towers" instance=ExtResource("4_u6r0y")]
+position = Vector2(236, 297)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(128, 160)
+position = Vector2(1060, 326)
 scale = Vector2(0.25, 0.25)
 collision_layer = 256
 collision_mask = 64
@@ -56,8 +59,8 @@ shape = SubResource("CircleShape2D_wqjij")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 scale = Vector2(4, 4)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
+process_callback = 0
+position_smoothing_speed = 20.0
 script = ExtResource("4_jenmu")
 
 [editable path="Spawners/Spawner"]

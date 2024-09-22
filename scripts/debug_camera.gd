@@ -1,6 +1,10 @@
 extends Camera2D
 
+@export var last_pos: Vector2 = Vector2.ZERO
 @export var speed: float = 2500.0
+
+func _ready() -> void:
+	last_pos = position
 
 func _physics_process(delta):
 
@@ -18,3 +22,7 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("camera_reset"):
 		position = Vector2.ZERO
+
+	GGG.player_move.emit(global_position - last_pos)
+
+	last_pos = global_position
