@@ -2,6 +2,7 @@ class_name GGG extends Object
 
 # Message BUS
 static var grid_click: Signal = new_static_signal("grid_click")
+static var player_move: Signal = new_static_signal("player_move")
 
 static var static_signal_id: int = 0
 

@@ -13,7 +13,8 @@ radius = 200.0
 
 [sub_resource type="Resource" id="Resource_ogmte"]
 script = ExtResource("5_ueqju")
-power = 3
+_power = 10
+_variance = 3
 
 [node name="Tower" type="Node2D"]
 script = ExtResource("1_8fl8w")
@@ -33,7 +34,7 @@ script = ExtResource("3_nu84b")
 shape = SubResource("CircleShape2D_iripf")
 
 [node name="CooldownAttack" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.5
 one_shot = true
 autostart = true
 script = ExtResource("3_o33u1")

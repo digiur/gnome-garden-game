@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c8684ae6sl34f" path="res://assets/environments/hierachry-grid.png" id="2_y7pgd"]
 [ext_resource type="Script" path="res://scripts/center_to_rect.gd" id="3_pplrp"]
 [ext_resource type="Script" path="res://scripts/resize_to_rect.gd" id="4_34bmb"]
-[ext_resource type="Script" path="res://scenes/ui/texture_rect_parallax.gd" id="4_idpb7"]
+[ext_resource type="Script" path="res://scripts/texture_rect_parallax.gd" id="4_idpb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43j5k"]
 size = Vector2(1280, 720)
