@@ -1,15 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://bu6xguutnlkm8"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_0t00b"]
-[ext_resource type="PackedScene" uid="uid://b8ry410fampqx" path="res://scenes/game.tscn" id="2_4whth"]
 [ext_resource type="Texture2D" uid="uid://cvju4qdakk7h0" path="res://assets/wizards/player/6.png" id="2_mdflj"]
+[ext_resource type="PackedScene" uid="uid://uniep8hu2f5k" path="res://scenes/game_demo.tscn" id="2_spb62"]
 [ext_resource type="Texture2D" uid="uid://cqtirnknhrayn" path="res://assets/icons/crystal.png" id="3_20wiy"]
 [ext_resource type="Texture2D" uid="uid://3y5kqwdryoti" path="res://assets/icons/campfire.png" id="4_n0kw1"]
 [ext_resource type="Texture2D" uid="uid://cbinky8h52orp" path="res://assets/icons/chest.png" id="5_0vgkf"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_0t00b")
-start_scene = ExtResource("2_4whth")
+start_scene = ExtResource("2_spb62")
 
 [node name="Background Color" type="ColorRect" parent="."]
 anchors_preset = 15

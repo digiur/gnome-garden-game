@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://c8yq8s66rb660"]
 
 [ext_resource type="Script" path="res://scripts/chunk.gd" id="1_71dhm"]
-[ext_resource type="TileSet" uid="uid://b3ykhxf4b11qm" path="res://resources/tilesets/ruins.tres" id="2_ett6l"]
+[ext_resource type="TileSet" uid="uid://b3ykhxf4b11qm" path="res://resources/tilesets/demo.tres" id="2_ett6l"]
 [ext_resource type="Script" path="res://scripts/nav_map.gd" id="3_llbnw"]
 
 [node name="Chunk" type="Node2D"]

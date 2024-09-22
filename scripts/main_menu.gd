@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name MainMenu extends CanvasLayer
 
 @export var start_scene: PackedScene
 

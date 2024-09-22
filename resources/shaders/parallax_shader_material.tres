@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d3qfslmggbtqf"]
+
+[ext_resource type="Shader" path="res://resources/shaders/ui_background_parallax.gdshader" id="1_m0bmf"]
+
+[resource]
+shader = ExtResource("1_m0bmf")
+shader_parameter/scroll = Vector2(1, 1)

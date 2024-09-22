@@ -11,5 +11,5 @@ func get_used_rect_global() -> Rect2i:
 	rect.position = rect.position + tile_pos
 	return rect
 
-func is_walkable(v: Vector2i) -> bool:
-	return get_cell_tile_data(v - tile_pos) != null
+func is_walkable(global_pos: Vector2i) -> bool:
+	return get_cell_tile_data(global_pos - tile_pos) != null
