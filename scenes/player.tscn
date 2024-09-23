@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhbbaqsp2bo6y"]
+
+[ext_resource type="Script" path="res://scripts/character_movement.gd" id="1_cpbi7"]
+[ext_resource type="Texture2D" uid="uid://cdm14hgecsegf" path="res://assets/wizards/wizard.png" id="2_4l1dt"]
+[ext_resource type="Script" path="res://scripts/debug_camera.gd" id="3_g5nj8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wqjij"]
+radius = 115.0
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+scale = Vector2(0.25, 0.25)
+collision_layer = 256
+collision_mask = 64
+script = ExtResource("1_cpbi7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -240)
+texture = ExtResource("2_4l1dt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(48, -120)
+shape = SubResource("CircleShape2D_wqjij")
+
+[node name="Camera2D" type="Camera2D" parent="CollisionShape2D"]
+scale = Vector2(4, 4)
+process_callback = 0
+position_smoothing_speed = 20.0
+script = ExtResource("3_g5nj8")

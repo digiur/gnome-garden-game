@@ -5,6 +5,11 @@ extends Camera2D
 
 func _ready() -> void:
 	last_pos = position
+	
+func _process(delta: float) -> void:
+	GGG.player_move.emit(global_position - last_pos)
+
+	last_pos = global_position
 
 func _physics_process(delta):
 
@@ -22,7 +27,3 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("camera_reset"):
 		position = Vector2.ZERO
-
-	GGG.player_move.emit(global_position - last_pos)
-
-	last_pos = global_position

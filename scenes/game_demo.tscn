@@ -1,14 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://uniep8hu2f5k"]
+[gd_scene load_steps=5 format=3 uid="uid://uniep8hu2f5k"]
 
 [ext_resource type="PackedScene" uid="uid://bhcs54ofsg4f4" path="res://scenes/chunks/debug_chunk_a.tscn" id="1_pl3ro"]
 [ext_resource type="PackedScene" uid="uid://bn7wdw1vounbu" path="res://scenes/mobs/spawners/spawner.tscn" id="3_33pif"]
-[ext_resource type="Script" path="res://scripts/debug_camera.gd" id="4_jenmu"]
+[ext_resource type="PackedScene" uid="uid://dhbbaqsp2bo6y" path="res://scenes/player.tscn" id="4_2elyw"]
 [ext_resource type="PackedScene" uid="uid://d08qsqikc146w" path="res://scenes/towers/tower.tscn" id="4_u6r0y"]
-[ext_resource type="Script" path="res://scripts/character_movement.gd" id="5_baga4"]
-[ext_resource type="Texture2D" uid="uid://cdm14hgecsegf" path="res://assets/wizards/wizard.png" id="6_6pp5o"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_wqjij"]
-radius = 115.0
 
 [node name="Game" type="Node"]
 
@@ -32,7 +27,7 @@ position = Vector2(48, 48)
 position = Vector2(882, 38)
 
 [node name="Tower3" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1136, 464)
+position = Vector2(1193, 401)
 
 [node name="Tower5" parent="Towers" instance=ExtResource("4_u6r0y")]
 position = Vector2(1094, 33)
@@ -43,24 +38,31 @@ position = Vector2(1535, 218)
 [node name="Tower7" parent="Towers" instance=ExtResource("4_u6r0y")]
 position = Vector2(236, 297)
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(1060, 326)
-scale = Vector2(0.25, 0.25)
-collision_layer = 256
-collision_mask = 64
-script = ExtResource("5_baga4")
+[node name="Tower8" parent="Towers" instance=ExtResource("4_u6r0y")]
+position = Vector2(106, 520)
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("6_6pp5o")
+[node name="Tower9" parent="Towers" instance=ExtResource("4_u6r0y")]
+position = Vector2(299, 882)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(48, 132)
-shape = SubResource("CircleShape2D_wqjij")
+[node name="Tower10" parent="Towers" instance=ExtResource("4_u6r0y")]
+position = Vector2(382, 887)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-scale = Vector2(4, 4)
-process_callback = 0
-position_smoothing_speed = 20.0
-script = ExtResource("4_jenmu")
+[node name="Tower11" parent="Towers" instance=ExtResource("4_u6r0y")]
+position = Vector2(488, 887)
+
+[node name="Tower12" parent="Towers" instance=ExtResource("4_u6r0y")]
+position = Vector2(943, 966)
+
+[node name="Tower13" parent="Towers" instance=ExtResource("4_u6r0y")]
+position = Vector2(1120, 801)
+
+[node name="Tower14" parent="Towers" instance=ExtResource("4_u6r0y")]
+position = Vector2(886, 504)
+
+[node name="Tower15" parent="Towers" instance=ExtResource("4_u6r0y")]
+position = Vector2(1301, 979)
+
+[node name="Player" parent="." instance=ExtResource("4_2elyw")]
+position = Vector2(585, 415)
 
 [editable path="Spawners/Spawner"]
