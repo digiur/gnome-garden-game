@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://uniep8hu2f5k"]
+[gd_scene load_steps=6 format=3 uid="uid://uniep8hu2f5k"]
 
 [ext_resource type="PackedScene" uid="uid://bhcs54ofsg4f4" path="res://scenes/chunks/debug_chunk_a.tscn" id="1_pl3ro"]
 [ext_resource type="PackedScene" uid="uid://bn7wdw1vounbu" path="res://scenes/mobs/spawners/spawner.tscn" id="3_33pif"]
 [ext_resource type="PackedScene" uid="uid://dhbbaqsp2bo6y" path="res://scenes/player.tscn" id="4_2elyw"]
-[ext_resource type="PackedScene" uid="uid://d08qsqikc146w" path="res://scenes/towers/tower.tscn" id="4_u6r0y"]
+[ext_resource type="Texture2D" uid="uid://cji00ndww6sd3" path="res://assets/environments/miscellany/conifer1.png" id="4_p652d"]
+[ext_resource type="Texture2D" uid="uid://bvvpnurxtbok2" path="res://assets/environments/buildings/house.png" id="5_nlxjp"]
 
 [node name="Game" type="Node"]
 
@@ -23,46 +24,57 @@ position = Vector2(48, 48)
 
 [node name="Towers" type="Node" parent="."]
 
-[node name="Tower4" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(882, 38)
-
-[node name="Tower3" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1193, 401)
-
-[node name="Tower5" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1094, 33)
-
-[node name="Tower6" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1535, 218)
-
-[node name="Tower7" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(236, 297)
-
-[node name="Tower8" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(106, 520)
-
-[node name="Tower9" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(299, 882)
-
-[node name="Tower10" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(382, 887)
-
-[node name="Tower11" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(488, 887)
-
-[node name="Tower12" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(943, 966)
-
-[node name="Tower13" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1120, 801)
-
-[node name="Tower14" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(886, 504)
-
-[node name="Tower15" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1301, 979)
-
 [node name="Player" parent="." instance=ExtResource("4_2elyw")]
 position = Vector2(585, 415)
+
+[node name="Trees" type="Node" parent="."]
+
+[node name="Conifer1" type="Sprite2D" parent="Trees"]
+position = Vector2(-1330, -1187)
+texture = ExtResource("4_p652d")
+
+[node name="Conifer2" type="Sprite2D" parent="Trees"]
+position = Vector2(3575, -94)
+texture = ExtResource("4_p652d")
+
+[node name="Conifer3" type="Sprite2D" parent="Trees"]
+position = Vector2(-582, 1689)
+texture = ExtResource("4_p652d")
+
+[node name="Conifer4" type="Sprite2D" parent="Trees"]
+position = Vector2(2137, -2123)
+texture = ExtResource("4_p652d")
+
+[node name="Conifer5" type="Sprite2D" parent="Trees"]
+position = Vector2(2905, 2654)
+texture = ExtResource("4_p652d")
+
+[node name="Conifer6" type="Sprite2D" parent="Trees"]
+position = Vector2(1117, 3750)
+texture = ExtResource("4_p652d")
+
+[node name="Conifer7" type="Sprite2D" parent="Trees"]
+position = Vector2(-2690, 1947)
+texture = ExtResource("4_p652d")
+
+[node name="Conifer8" type="Sprite2D" parent="Trees"]
+position = Vector2(6222, 591)
+texture = ExtResource("4_p652d")
+
+[node name="Conifer9" type="Sprite2D" parent="Trees"]
+position = Vector2(4910, -2250)
+texture = ExtResource("4_p652d")
+
+[node name="Conifer10" type="Sprite2D" parent="Trees"]
+position = Vector2(-3022, -2178)
+texture = ExtResource("4_p652d")
+
+[node name="Conifer11" type="Sprite2D" parent="Trees"]
+position = Vector2(6784, 4182)
+texture = ExtResource("4_p652d")
+
+[node name="House" type="Sprite2D" parent="."]
+position = Vector2(1211, -182)
+texture = ExtResource("5_nlxjp")
 
 [editable path="Spawners/Spawner"]
