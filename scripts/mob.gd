@@ -10,6 +10,7 @@ class_name Mob extends PathFollow2D
 
 @onready var target: Target = %Target
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
+@onready var collision_shape_2d: CollisionShape2D = $Target/CollisionShape2D
 
 var _paused = false
 
@@ -30,10 +31,10 @@ func _physics_process(dt: float) -> void:
 		queue_free()
 
 func _on_health_points_health_empty() -> void:
-		target.monitorable = false
+		collision_shape_2d.disabled = true
 		speed = 0.0
 		animated_sprite_2d.pause()
-		animated_sprite_2d.look_at(animated_sprite_2d.global_position + Vector2.UP)
+		animated_sprite_2d.look_at(animated_sprite_2d.global_position + Vector2.UP.rotated(randf_range(-1,1)))
 		get_tree().create_timer(12).timeout.connect(queue_free)
 
 func _pause() -> void:
