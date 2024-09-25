@@ -8,6 +8,9 @@ class_name Mob extends PathFollow2D
 @export var pause_period: float = 1.0
 @export var pause_variance: float = 0.6
 
+@export var dead_time: float = 20.0
+@export var fade_steps: float = 15.0
+
 @onready var target: Target = %Target
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $Target/CollisionShape2D
@@ -35,7 +38,8 @@ func _on_health_points_health_empty() -> void:
 		speed = 0.0
 		animated_sprite_2d.pause()
 		animated_sprite_2d.look_at(animated_sprite_2d.global_position + Vector2.UP.rotated(randf_range(-1,1)))
-		get_tree().create_timer(12).timeout.connect(queue_free)
+		get_tree().create_timer(dead_time).timeout.connect(queue_free)
+		get_tree().create_timer(dead_time/fade_steps).timeout.connect(fade_out)
 
 func _pause() -> void:
 	_paused = true
@@ -46,3 +50,7 @@ func _unpause() -> void:
 	_paused = false
 	var t: float = randf_range(walk_period - walk_variance, walk_period + walk_variance)
 	get_tree().create_timer(t).connect("timeout", _pause)
+
+func fade_out() -> void:
+	animated_sprite_2d.modulate.a -= 1.0/(fade_steps-1)
+	get_tree().create_timer(dead_time/fade_steps).timeout.connect(fade_out)

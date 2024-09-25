@@ -1,7 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpsllhxembe1g"]
+[gd_scene load_steps=7 format=3 uid="uid://dpsllhxembe1g"]
 
 [ext_resource type="Script" path="res://scripts/damage_number.gd" id="1_1jwv3"]
-[ext_resource type="LabelSettings" uid="uid://tkuswu8ox0lo" path="res://resources/ui/damage_number_white_label_settings.tres" id="2_uk1to"]
+[ext_resource type="FontFile" uid="uid://b0unfc1c4q05t" path="res://assets/fonts/vermin_vibes_1989.ttf" id="2_xlnla"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v513q"]
+font = ExtResource("2_xlnla")
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_yhqht"]
 length = 0.6
@@ -16,7 +22,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -12), Vector2(0, -12), Vector2(8, 0)]
+"values": [Vector2(0, 0), Vector2(0, -32), Vector2(0, -32), Vector2(8, -20)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -76,8 +82,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c231p"]
 _data = {
-&"RESET": SubResource("Animation_yhqht"),
-&"float_label": SubResource("Animation_cfq1v")
+&"float_label": SubResource("Animation_cfq1v"),
+&"RESET": SubResource("Animation_yhqht")
 }
 
 [node name="DamageNumber" type="Control"]
@@ -96,11 +102,12 @@ script = ExtResource("1_1jwv3")
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 0
-offset_right = 54.0
-offset_bottom = 42.0
+offset_right = 36.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 32
 text = "42
 "
-label_settings = ExtResource("2_uk1to")
+label_settings = SubResource("LabelSettings_v513q")
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 0

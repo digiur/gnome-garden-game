@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c8k7pslk01p7l" path="res://resources/particles/fire_particles_Yellow_base_size_curve_texture.tres" id="1_rwekr"]
 
 [sub_resource type="Gradient" id="Gradient_bg5f2"]
-offsets = PackedFloat32Array(0.212346, 0.333333, 0.437037)
+offsets = PackedFloat32Array(0.18863, 0.276486, 0.365633)
 colors = PackedColorArray(1, 1, 0, 1, 0.690196, 0.207843, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7uyik"]
@@ -16,8 +16,8 @@ emission_shape = 3
 emission_box_extents = Vector3(16, 16, 0)
 direction = Vector3(0, -1, 0)
 gravity = Vector3(0, -120, 0)
-scale_min = 0.2
-scale_max = 0.3
+scale_min = 4.0
+scale_max = 4.0
 scale_curve = ExtResource("1_rwekr")
 color_ramp = SubResource("GradientTexture1D_7uyik")
 turbulence_enabled = true

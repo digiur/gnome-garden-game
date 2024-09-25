@@ -1,26 +1,28 @@
-[gd_scene load_steps=17 format=3 uid="uid://c8p3rxsirwufy"]
+[gd_scene load_steps=16 format=3 uid="uid://c8p3rxsirwufy"]
 
 [ext_resource type="Script" path="res://scripts/particles_tile.gd" id="1_awlcx"]
 [ext_resource type="Material" uid="uid://yvxvovltf6gs" path="res://resources/particles/fire_particles_orange_base.tres" id="1_t6fwr"]
-[ext_resource type="Texture2D" uid="uid://s5s7npgbnfjq" path="res://assets/environments/white32x32.png" id="2_uuihy"]
 [ext_resource type="Material" uid="uid://dkq0ykml6jdbf" path="res://resources/particles/fire_particles_red_base.tres" id="3_pymuv"]
 [ext_resource type="Material" uid="uid://w02lm1fk6xcn" path="res://resources/particles/fire_particles_yellow_base.tres" id="4_yim3y"]
 [ext_resource type="Material" uid="uid://dls1j1j7i4ujg" path="res://resources/particles/fire_particles_soot.tres" id="5_vk26f"]
 [ext_resource type="Material" uid="uid://b046nsnrcp8da" path="res://resources/particles/fire_particles_heart.tres" id="6_u18ke"]
 [ext_resource type="Material" uid="uid://dk7pw4fm0umgt" path="res://resources/particles/fire_particles_orange_sparks.tres" id="7_u522h"]
 [ext_resource type="Material" uid="uid://b8y5kxrjrqbev" path="res://resources/particles/fire_particles_white_sparks.tres" id="8_qum5x"]
-[ext_resource type="Gradient" uid="uid://b47ge08l7qeuc" path="res://resources/particles/fire_gradient.tres" id="10_8cytr"]
-[ext_resource type="Texture2D" uid="uid://bugx83rm2tfwq" path="res://assets/environments/white16x16.png" id="11_n4wio"]
+[ext_resource type="Gradient" uid="uid://vktau61mudm1" path="res://explosion_gradient.tres" id="9_6acyk"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_pla4n"]
-gradient = ExtResource("10_8cytr")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0efyl"]
+gradient = ExtResource("9_6acyk")
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_sfgcq"]
-gradient = ExtResource("10_8cytr")
+[sub_resource type="Gradient" id="Gradient_v6xmg"]
+offsets = PackedFloat32Array(0, 0.567196, 0.807407)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3mgf8"]
+gradient = SubResource("Gradient_v6xmg")
 
 [sub_resource type="Curve" id="Curve_6aiau"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.497506, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(1e-05, 1), 0.0, -3.01647, 0, 0, Vector2(1, 0), -3.18174, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_utyx0"]
 curve = SubResource("Curve_6aiau")
@@ -30,11 +32,14 @@ particle_flag_disable_z = true
 spread = 180.0
 initial_velocity_min = 250.0
 initial_velocity_max = 350.0
-gravity = Vector3(0, -980, 0)
+gravity = Vector3(0, -400, 0)
+scale_min = 16.0
+scale_max = 16.0
 scale_curve = SubResource("CurveTexture_utyx0")
-color_ramp = SubResource("GradientTexture1D_sfgcq")
-color_initial_ramp = SubResource("GradientTexture1D_pla4n")
+color_ramp = SubResource("GradientTexture1D_3mgf8")
+color_initial_ramp = SubResource("GradientTexture1D_0efyl")
 turbulence_enabled = true
+turbulence_influence_min = 0.15
 turbulence_influence_max = 0.2
 
 [node name="ParticlesTile" type="Node2D"]
@@ -43,34 +48,30 @@ script = ExtResource("1_awlcx")
 
 [node name="BaseA" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
-amount = 15
+amount = 30
 process_material = ExtResource("1_t6fwr")
-texture = ExtResource("2_uuihy")
 lifetime = 4.0
 visibility_rect = Rect2(-100, -350, 200, 400)
 
 [node name="BaseB" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
-amount = 15
+amount = 30
 process_material = ExtResource("3_pymuv")
-texture = ExtResource("2_uuihy")
 lifetime = 4.0
 visibility_rect = Rect2(-100, -350, 200, 400)
 
 [node name="BaseC" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
-amount = 15
+amount = 30
 process_material = ExtResource("4_yim3y")
-texture = ExtResource("2_uuihy")
 lifetime = 4.0
 visibility_rect = Rect2(-100, -350, 200, 400)
 
 [node name="Core" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, 8)
-amount = 30
+amount = 60
 process_material = ExtResource("6_u18ke")
-texture = ExtResource("2_uuihy")
 lifetime = 4.0
 speed_scale = 1.5
 visibility_rect = Rect2(-100, -350, 200, 400)
@@ -78,18 +79,16 @@ visibility_rect = Rect2(-100, -350, 200, 400)
 [node name="MotesA" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -20)
-amount = 10
+amount = 15
 process_material = ExtResource("5_vk26f")
-texture = ExtResource("2_uuihy")
 lifetime = 5.0
 visibility_rect = Rect2(-100, -350, 200, 400)
 
 [node name="MotesB" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -20)
-amount = 5
+amount = 2
 process_material = ExtResource("7_u522h")
-texture = ExtResource("2_uuihy")
 lifetime = 4.0
 speed_scale = 1.3
 visibility_rect = Rect2(-100, -350, 200, 400)
@@ -97,20 +96,19 @@ visibility_rect = Rect2(-100, -350, 200, 400)
 [node name="MotesC" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -20)
-amount = 5
+amount = 2
 process_material = ExtResource("8_qum5x")
-texture = ExtResource("2_uuihy")
 lifetime = 4.0
 speed_scale = 1.3
 visibility_rect = Rect2(-100, -350, 200, 400)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 20
+amount = 60
 process_material = SubResource("ParticleProcessMaterial_ok7g5")
-texture = ExtResource("11_n4wio")
-lifetime = 0.66
+lifetime = 0.5
 one_shot = true
-explosiveness = 0.75
+explosiveness = 1.0
 
+[connection signal="finished" from="Core" to="." method="_on_core_finished"]
 [connection signal="finished" from="MotesA" to="." method="_on_motes_a_finished"]

@@ -22,15 +22,15 @@ func restart() -> void:
 	core.restart()
 	core.one_shot = one_shot
 	base_a.restart()
-	base_a.one_shot = one_shot
+	base_a.one_shot = false
 	base_b.restart()
-	base_b.one_shot = one_shot
+	base_b.one_shot = false
 	base_c.restart()
-	base_c.one_shot = one_shot
+	base_c.one_shot = false
 	motes_a.restart()
-	motes_a.one_shot = one_shot
+	motes_a.one_shot = false
 	motes_b.restart()
-	motes_b.one_shot = one_shot
+	motes_b.one_shot = false
 	motes_c.restart()
 	motes_c.one_shot = one_shot
 	gpu_particles_2d.restart()
@@ -38,12 +38,15 @@ func restart() -> void:
 
 func stop() -> void:
 	core.one_shot = true
+	motes_c.one_shot = true
+	motes_b.one_shot = true
+
+func _on_core_finished() -> void:
 	base_a.one_shot = true
 	base_b.one_shot = true
 	base_c.one_shot = true
-	motes_a.one_shot = true
 	motes_b.one_shot = true
-	motes_c.one_shot = true
+	motes_a.one_shot = true
 
 func _on_motes_a_finished() -> void:
 	queue_free()

@@ -1,11 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://ctpbfg2lsw6gm"]
+[gd_scene load_steps=22 format=3 uid="uid://ctpbfg2lsw6gm"]
 
 [ext_resource type="Script" path="res://scripts/mob.gd" id="1_vv60s"]
 [ext_resource type="Texture2D" uid="uid://b32nlkea8qijq" path="res://assets/units/gnome/gnome_walk.png" id="2_g102s"]
 [ext_resource type="Material" uid="uid://daecbtbncqcw" path="res://resources/shaders/selected_shader_material.tres" id="2_jfhx6"]
 [ext_resource type="Script" path="res://scripts/target.gd" id="4_t4gdv"]
 [ext_resource type="Script" path="res://scripts/health_points.gd" id="5_eathq"]
-[ext_resource type="LabelSettings" uid="uid://tkuswu8ox0lo" path="res://resources/ui/damage_number_white_label_settings.tres" id="6_4goqx"]
+[ext_resource type="FontFile" uid="uid://b0unfc1c4q05t" path="res://assets/fonts/vermin_vibes_1989.ttf" id="6_p1y1q"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="6_qf8mo"]
 [ext_resource type="Script" path="res://scripts/damage_numbers.gd" id="7_lbe5e"]
 
@@ -89,6 +89,11 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dg8n1"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_u0yxn"]
+font = ExtResource("6_p1y1q")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Mob" type="PathFollow2D"]
 y_sort_enabled = true
 rotates = false
@@ -122,11 +127,11 @@ max_health = 256
 offset_right = 40.0
 offset_bottom = 23.0
 text = "100"
-label_settings = ExtResource("6_4goqx")
+label_settings = SubResource("LabelSettings_u0yxn")
 script = ExtResource("6_qf8mo")
 
 [node name="DamageNumbers" type="Node2D" parent="."]
-position = Vector2(-1, -39)
+position = Vector2(-1, -52)
 script = ExtResource("7_lbe5e")
 
 [connection signal="health_critical" from="HealthPoints" to="HealthBar" method="_on_health_points_health_critical"]
