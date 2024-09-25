@@ -32,10 +32,9 @@ y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("4_2elyw")]
 y_sort_enabled = false
-position = Vector2(585, 415)
+position = Vector2(645, 94)
 
 [node name="Props" type="Node2D" parent="."]
-visible = false
 y_sort_enabled = true
 
 [node name="Conifer1" parent="Props" instance=ExtResource("4_k087h")]
@@ -142,7 +141,7 @@ position = Vector2(602, 705)
 
 [node name="Tower12" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
-position = Vector2(924, 358)
+position = Vector2(881, 421)
 
 [node name="Tower13" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
