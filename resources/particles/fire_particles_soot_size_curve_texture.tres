@@ -1,0 +1,6 @@
+[gd_resource type="CurveTexture" load_steps=2 format=3 uid="uid://b4300n3cy4uw7"]
+
+[ext_resource type="Curve" uid="uid://55swny0u0ma8" path="res://resources/particles/fire_particles_soot_size_curve.tres" id="1_iiyqv"]
+
+[resource]
+curve = ExtResource("1_iiyqv")

@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8hvb2kogl8wb"]
+
+[ext_resource type="Material" uid="uid://yvxvovltf6gs" path="res://resources/particles/fire_particles_orange_base.tres" id="1_slufe"]
+[ext_resource type="Texture2D" uid="uid://s5s7npgbnfjq" path="res://assets/environments/white32x32.png" id="2_dk4kt"]
+[ext_resource type="Material" uid="uid://dkq0ykml6jdbf" path="res://resources/particles/fire_particles_red_base.tres" id="3_1td56"]
+[ext_resource type="Material" uid="uid://w02lm1fk6xcn" path="res://resources/particles/fire_particles_yellow_base.tres" id="4_gtwf1"]
+[ext_resource type="Material" uid="uid://dls1j1j7i4ujg" path="res://resources/particles/fire_particles_soot.tres" id="5_p350v"]
+[ext_resource type="Material" uid="uid://b046nsnrcp8da" path="res://resources/particles/fire_particles_heart.tres" id="6_bon1f"]
+[ext_resource type="Material" uid="uid://dk7pw4fm0umgt" path="res://resources/particles/fire_particles_orange_sparks.tres" id="7_3385w"]
+[ext_resource type="Material" uid="uid://b8y5kxrjrqbev" path="res://resources/particles/fire_particles_white_sparks.tres" id="8_wftwa"]
+
+[node name="Fire" type="Node2D"]
+position = Vector2(403, 294)
+
+[node name="OrangeBase" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 10
+process_material = ExtResource("1_slufe")
+texture = ExtResource("2_dk4kt")
+lifetime = 4.0
+visibility_rect = Rect2(-100, -350, 200, 400)
+
+[node name="RedBase" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 10
+process_material = ExtResource("3_1td56")
+texture = ExtResource("2_dk4kt")
+lifetime = 4.0
+visibility_rect = Rect2(-100, -350, 200, 400)
+
+[node name="YellowBase" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 10
+process_material = ExtResource("4_gtwf1")
+texture = ExtResource("2_dk4kt")
+lifetime = 4.0
+speed_scale = 1.2
+visibility_rect = Rect2(-100, -350, 200, 400)
+
+[node name="Soot" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 10
+process_material = ExtResource("5_p350v")
+texture = ExtResource("2_dk4kt")
+lifetime = 3.0
+visibility_rect = Rect2(-100, -350, 200, 400)
+
+[node name="Heart" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 10
+process_material = ExtResource("6_bon1f")
+texture = ExtResource("2_dk4kt")
+lifetime = 2.0
+speed_scale = 1.2
+visibility_rect = Rect2(-100, -350, 200, 400)
+
+[node name="OrangeSparks" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 3
+process_material = ExtResource("7_3385w")
+texture = ExtResource("2_dk4kt")
+lifetime = 4.5
+speed_scale = 1.3
+visibility_rect = Rect2(-100, -350, 200, 400)
+
+[node name="WhiteSparks" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 3
+process_material = ExtResource("8_wftwa")
+texture = ExtResource("2_dk4kt")
+lifetime = 4.5
+speed_scale = 1.3
+visibility_rect = Rect2(-100, -350, 200, 400)

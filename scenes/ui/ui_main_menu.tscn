@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cbinky8h52orp" path="res://assets/icons/chest.png" id="5_0vgkf"]
 
 [node name="MainMenu" type="CanvasLayer"]
+layer = 12
 script = ExtResource("1_0t00b")
 start_scene = ExtResource("2_spb62")
 

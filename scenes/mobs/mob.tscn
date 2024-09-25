@@ -105,6 +105,7 @@ autoplay = "default"
 frame_progress = 0.636753
 
 [node name="Target" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 2048
 collision_mask = 0
 script = ExtResource("4_t4gdv")
@@ -131,4 +132,5 @@ script = ExtResource("7_lbe5e")
 [connection signal="health_critical" from="HealthPoints" to="HealthBar" method="_on_health_points_health_critical"]
 [connection signal="health_depleted" from="HealthPoints" to="DamageNumbers" method="_on_health_points_health_depleted"]
 [connection signal="health_empty" from="HealthPoints" to="." method="_on_health_points_health_empty"]
+[connection signal="health_empty" from="HealthPoints" to="HealthBar" method="_on_health_points_health_empty"]
 [connection signal="health_low" from="HealthPoints" to="HealthBar" method="_on_health_points_health_low"]

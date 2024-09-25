@@ -11,41 +11,47 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_iripf"]
 radius = 200.0
 
-[sub_resource type="Resource" id="Resource_ogmte"]
+[sub_resource type="Resource" id="Resource_wkx7x"]
 script = ExtResource("5_ueqju")
-_power = 10
-_variance = 3
+_power = 50
+_variance = 25
 
 [node name="Tower" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_8fl8w")
 
 [node name="MainSprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -44)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_m76kp")
 
 [node name="TargetingRange" type="Area2D" parent="."]
 unique_name_in_owner = true
+y_sort_enabled = true
 collision_layer = 128
 collision_mask = 2048
 script = ExtResource("3_nu84b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetingRange"]
+y_sort_enabled = true
 shape = SubResource("CircleShape2D_iripf")
 
-[node name="CooldownAttack" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-autostart = true
-script = ExtResource("3_o33u1")
-attack = SubResource("Resource_ogmte")
-
 [node name="TargetingLine" type="Line2D" parent="."]
+y_sort_enabled = true
 points = PackedVector2Array(0, 0, 0, 0)
 width = 20.0
 texture = ExtResource("6_i66pn")
 texture_mode = 2
 script = ExtResource("7_pjxyc")
+
+[node name="CooldownAttack" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.75
+one_shot = true
+autostart = true
+script = ExtResource("3_o33u1")
+attack = SubResource("Resource_wkx7x")
 
 [connection signal="area_entered" from="TargetingRange" to="TargetingRange" method="_on_area_entered"]
 [connection signal="area_exited" from="TargetingRange" to="TargetingRange" method="_on_area_exited"]

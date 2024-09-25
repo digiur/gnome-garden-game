@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://de5ebeoq5r0n1"]
+
+[ext_resource type="Texture2D" uid="uid://bvvpnurxtbok2" path="res://assets/environments/buildings/house.png" id="1_pwjy1"]
+
+[node name="House" type="Sprite2D"]
+texture = ExtResource("1_pwjy1")
+offset = Vector2(138, -675)

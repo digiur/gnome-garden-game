@@ -8,6 +8,7 @@
 [node name="Spawner" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_dc2fh")
+spawn_time = 0.5
 
 [node name="AttackTarget" type="Node2D" parent="."]
 unique_name_in_owner = true
