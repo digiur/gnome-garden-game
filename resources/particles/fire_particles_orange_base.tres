@@ -1,0 +1,23 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=4 format=3 uid="uid://yvxvovltf6gs"]
+
+[ext_resource type="Texture2D" uid="uid://bkhyhnone5hti" path="res://resources/particles/fire_particles_base_size_curve_texture.tres" id="1_u3y2o"]
+
+[sub_resource type="Gradient" id="Gradient_sodg5"]
+offsets = PackedFloat32Array(0, 0.419753)
+colors = PackedColorArray(1, 0.4, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qmtth"]
+gradient = SubResource("Gradient_sodg5")
+
+[resource]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(16, 16, 0)
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, -100, 0)
+scale_min = 0.15
+scale_max = 0.25
+scale_curve = ExtResource("1_u3y2o")
+color_ramp = SubResource("GradientTexture1D_qmtth")
+turbulence_enabled = true

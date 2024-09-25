@@ -8,6 +8,9 @@ class_name Mob extends PathFollow2D
 @export var pause_period: float = 1.0
 @export var pause_variance: float = 0.6
 
+@onready var target: Target = %Target
+@onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
+
 var _paused = false
 
 func _ready() -> void:
@@ -27,7 +30,11 @@ func _physics_process(dt: float) -> void:
 		queue_free()
 
 func _on_health_points_health_empty() -> void:
-	queue_free()
+		target.monitorable = false
+		speed = 0.0
+		animated_sprite_2d.pause()
+		animated_sprite_2d.look_at(animated_sprite_2d.global_position + Vector2.UP)
+		get_tree().create_timer(12).timeout.connect(queue_free)
 
 func _pause() -> void:
 	_paused = true

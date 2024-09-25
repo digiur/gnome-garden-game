@@ -14,3 +14,6 @@ func _on_health_points_health_low() -> void:
 
 func _on_health_points_health_critical() -> void:
 	label_settings = RED_LABEL_SETTINGS
+
+func _on_health_points_health_empty() -> void:
+	visible = false

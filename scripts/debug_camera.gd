@@ -12,7 +12,6 @@ func _process(delta: float) -> void:
 	last_pos = global_position
 
 func _physics_process(delta):
-
 	if Input.is_action_pressed("camera_down"):
 		position += Vector2.DOWN * speed * delta
 
