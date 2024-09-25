@@ -108,6 +108,7 @@ position = Vector2(180, -25)
 position = Vector2(2252, 235)
 
 [node name="Towers" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Tower" parent="Towers" instance=ExtResource("6_gxent")]
 position = Vector2(94, 495)
