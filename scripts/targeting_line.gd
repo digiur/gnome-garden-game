@@ -5,10 +5,13 @@ class_name TargetingLine extends Line2D
 
 @onready var my_target: Vector2 = global_position
 
-func _process(delta: float) -> void:
-	if targets.current_taget:
-		my_target = targets.current_taget.global_position
+func _ready() -> void:
+	cooldown.attack_launched.connect(did_attack)
 
+func _process(delta: float) -> void:
 	var d = my_target - global_position
-	d = global_position + d * remap(1 - (cooldown.time_left / cooldown.wait_time), 0, 1, 0.5, 1)
+	d = global_position + d * (cooldown.time_left / cooldown.wait_time)
 	points[1] = to_local(d)
+
+func did_attack(v: Vector2) -> void:
+	my_target = v

@@ -5,7 +5,6 @@
 [ext_resource type="Script" path="res://scripts/targeting_area.gd" id="3_ax50p"]
 [ext_resource type="Script" path="res://scripts/cooldown_attack.gd" id="4_71gqi"]
 [ext_resource type="Script" path="res://scripts/attack.gd" id="5_84j6u"]
-[ext_resource type="Texture2D" uid="uid://dfopnm4qu001w" path="res://assets/attacks/attack_plant_arrowroot.png" id="6_gfb3l"]
 [ext_resource type="PackedScene" uid="uid://c8p3rxsirwufy" path="res://scenes/particles_tile.tscn" id="6_j14at"]
 [ext_resource type="Script" path="res://scripts/targeting_line.gd" id="7_piifd"]
 
@@ -16,6 +15,9 @@ radius = 200.0
 script = ExtResource("5_84j6u")
 _power = 200
 _variance = 50
+
+[sub_resource type="Gradient" id="Gradient_v8qpt"]
+colors = PackedColorArray(0.392157, 0, 0, 1, 1, 0, 0, 1)
 
 [node name="Tower" type="Node2D"]
 y_sort_enabled = true
@@ -52,8 +54,8 @@ effect = ExtResource("6_j14at")
 modulate = Color(1, 0, 0, 1)
 y_sort_enabled = true
 points = PackedVector2Array(0, 0, 0, 0)
-width = 20.0
-texture = ExtResource("6_gfb3l")
+width = 12.0
+gradient = SubResource("Gradient_v8qpt")
 texture_mode = 2
 script = ExtResource("7_piifd")
 

@@ -35,6 +35,7 @@ y_sort_enabled = false
 position = Vector2(585, 415)
 
 [node name="Props" type="Node2D" parent="."]
+visible = false
 y_sort_enabled = true
 
 [node name="Conifer1" parent="Props" instance=ExtResource("4_k087h")]
@@ -128,18 +129,12 @@ position = Vector2(1547, 154)
 [node name="Tower6" parent="Towers" instance=ExtResource("6_gxent")]
 position = Vector2(1769, 442)
 
-[node name="Tower7" parent="Towers" instance=ExtResource("6_gxent")]
-position = Vector2(982, 627)
-
-[node name="Tower8" parent="Towers" instance=ExtResource("6_gxent")]
-position = Vector2(1127, 173)
-
 [node name="Tower9" parent="Towers" instance=ExtResource("7_d8onh")]
 position = Vector2(519, 190)
 
 [node name="Tower10" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
-position = Vector2(617, 475)
+position = Vector2(696, 445)
 
 [node name="Tower11" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
@@ -147,10 +142,28 @@ position = Vector2(602, 705)
 
 [node name="Tower12" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
-position = Vector2(1097, 458)
+position = Vector2(924, 358)
 
 [node name="Tower13" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
 position = Vector2(1774, 111)
+
+[node name="Tower14" parent="Towers" instance=ExtResource("7_d8onh")]
+position = Vector2(833, 75)
+
+[node name="Tower15" parent="Towers" instance=ExtResource("7_d8onh")]
+position = Vector2(1134, 169)
+
+[node name="Tower16" parent="Towers" instance=ExtResource("7_d8onh")]
+y_sort_enabled = false
+position = Vector2(480, 451)
+
+[node name="Tower17" parent="Towers" instance=ExtResource("7_d8onh")]
+y_sort_enabled = false
+position = Vector2(1208, 550)
+
+[node name="Tower18" parent="Towers" instance=ExtResource("7_d8onh")]
+y_sort_enabled = false
+position = Vector2(984, 634)
 
 [editable path="Spawners/Spawner"]
