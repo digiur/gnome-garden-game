@@ -8,8 +8,8 @@ class_name Mob extends PathFollow2D
 @export var pause_period: float = 1.0
 @export var pause_variance: float = 0.6
 
-@export var dead_time: float = 20.0
-@export var fade_steps: float = 15.0
+@export var dead_time: float = 40.0
+@export var fade_steps: float = 6.0
 
 @onready var target: Target = %Target
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
