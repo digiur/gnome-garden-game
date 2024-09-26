@@ -28,6 +28,7 @@ texture = ExtResource("3_m76kp")
 
 [node name="TargetingRange" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 y_sort_enabled = true
 collision_layer = 128
 collision_mask = 2048

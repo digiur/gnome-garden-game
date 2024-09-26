@@ -133,7 +133,7 @@ position = Vector2(519, 190)
 
 [node name="Tower10" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
-position = Vector2(696, 445)
+position = Vector2(710, 555)
 
 [node name="Tower11" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
@@ -141,7 +141,7 @@ position = Vector2(602, 705)
 
 [node name="Tower12" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
-position = Vector2(881, 421)
+position = Vector2(922, 385)
 
 [node name="Tower13" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
@@ -155,7 +155,7 @@ position = Vector2(1134, 169)
 
 [node name="Tower16" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
-position = Vector2(480, 451)
+position = Vector2(511, 388)
 
 [node name="Tower17" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
