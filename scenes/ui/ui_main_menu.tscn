@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bu6xguutnlkm8"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_0t00b"]
-[ext_resource type="Texture2D" uid="uid://cvju4qdakk7h0" path="res://assets/wizards/player/6.png" id="2_mdflj"]
 [ext_resource type="PackedScene" uid="uid://uniep8hu2f5k" path="res://scenes/game_demo.tscn" id="2_spb62"]
+[ext_resource type="Texture2D" uid="uid://ca5bkdualxbiq" path="res://assets/units/racoon_rider.png" id="3_4qila"]
 [ext_resource type="Texture2D" uid="uid://cqtirnknhrayn" path="res://assets/icons/crystal.png" id="3_20wiy"]
-[ext_resource type="Texture2D" uid="uid://3y5kqwdryoti" path="res://assets/icons/campfire.png" id="4_n0kw1"]
+[ext_resource type="Texture2D" uid="uid://dcmueqqrxdccp" path="res://assets/units/captain_snail.png" id="4_u416v"]
 [ext_resource type="Texture2D" uid="uid://cbinky8h52orp" path="res://assets/icons/chest.png" id="5_0vgkf"]
 
 [node name="MainMenu" type="CanvasLayer"]
@@ -22,7 +22,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Wizard" type="TextureRect" parent="."]
+[node name="Raccoon" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("2_mdflj")
+texture = ExtResource("3_4qila")
 expand_mode = 1
 stretch_mode = 5
 
@@ -62,9 +62,9 @@ layout_mode = 2
 layout_mode = 2
 columns = 2
 
-[node name="CrystalIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer/MenuPanel/MenuGrid"]
+[node name="CampfireIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer/MenuPanel/MenuGrid"]
 layout_mode = 2
-texture = ExtResource("3_20wiy")
+texture = ExtResource("4_u416v")
 expand_mode = 2
 stretch_mode = 5
 
@@ -72,23 +72,27 @@ stretch_mode = 5
 layout_mode = 2
 text = "Start"
 
-[node name="CampfireIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer/MenuPanel/MenuGrid"]
+[node name="CrystalIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer/MenuPanel/MenuGrid"]
+visible = false
 layout_mode = 2
-texture = ExtResource("4_n0kw1")
+texture = ExtResource("3_20wiy")
 expand_mode = 2
 stretch_mode = 5
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer/HBoxContainer/MenuPanel/MenuGrid"]
+visible = false
 layout_mode = 2
 text = "Options"
 
 [node name="ChestIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer/MenuPanel/MenuGrid"]
+visible = false
 layout_mode = 2
 texture = ExtResource("5_0vgkf")
 expand_mode = 2
 stretch_mode = 5
 
 [node name="AboutButton" type="Button" parent="VBoxContainer/HBoxContainer/MenuPanel/MenuGrid"]
+visible = false
 layout_mode = 2
 text = "About"
 
