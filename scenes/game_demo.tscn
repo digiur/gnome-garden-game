@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://uniep8hu2f5k"]
+[gd_scene load_steps=11 format=3 uid="uid://uniep8hu2f5k"]
 
 [ext_resource type="PackedScene" uid="uid://bhcs54ofsg4f4" path="res://scenes/chunks/debug_chunk_a.tscn" id="1_pl3ro"]
 [ext_resource type="PackedScene" uid="uid://bn7wdw1vounbu" path="res://scenes/mobs/spawners/spawner.tscn" id="3_33pif"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://d1d7rx6v0yokh" path="res://scenes/props/conifer.tscn" id="4_k087h"]
 [ext_resource type="PackedScene" uid="uid://de5ebeoq5r0n1" path="res://scenes/props/house.tscn" id="5_ajg4d"]
 [ext_resource type="PackedScene" uid="uid://d08qsqikc146w" path="res://scenes/towers/tower.tscn" id="6_gxent"]
+[ext_resource type="Texture2D" uid="uid://dblthex3uj5vb" path="res://assets/bansai/Bonsai.png" id="6_x735d"]
+[ext_resource type="Texture2D" uid="uid://bjndep6u6kml4" path="res://assets/bansai/BonsaiDragonfruit.png" id="7_3qwan"]
 [ext_resource type="PackedScene" uid="uid://g57jwvslj535" path="res://scenes/towers/fire_tower.tscn" id="7_d8onh"]
+[ext_resource type="AudioStream" uid="uid://5fkjpd2btnru" path="res://assets/audio/sonatina_letsadventure_6Flying.ogg" id="10_eco1d"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -65,9 +68,6 @@ position = Vector2(2203, 2505)
 [node name="House" parent="Props" instance=ExtResource("5_ajg4d")]
 position = Vector2(851, 31)
 
-[node name="Conifer9" parent="Props" instance=ExtResource("4_k087h")]
-position = Vector2(813, 3199)
-
 [node name="Conifer10" parent="Props" instance=ExtResource("4_k087h")]
 position = Vector2(1218, 3412)
 
@@ -106,6 +106,19 @@ position = Vector2(180, -25)
 
 [node name="Conifer22" parent="Props" instance=ExtResource("4_k087h")]
 position = Vector2(2252, 235)
+
+[node name="Conifer9" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(800, 3248)
+
+[node name="Bonsai" type="Sprite2D" parent="Props"]
+position = Vector2(384, 3648)
+texture = ExtResource("6_x735d")
+offset = Vector2(16, -128)
+
+[node name="BonsaiDragonfruit" type="Sprite2D" parent="Props"]
+position = Vector2(880, 3568)
+texture = ExtResource("7_3qwan")
+offset = Vector2(48, -256)
 
 [node name="Towers" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -164,5 +177,12 @@ position = Vector2(1208, 550)
 [node name="Tower18" parent="Towers" instance=ExtResource("7_d8onh")]
 y_sort_enabled = false
 position = Vector2(984, 634)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(656, 3616)
+stream = ExtResource("10_eco1d")
+autoplay = true
+max_distance = 3000.0
+attenuation = 2.0
 
 [editable path="Spawners/Spawner"]
