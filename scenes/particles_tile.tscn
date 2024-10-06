@@ -8,7 +8,7 @@
 [ext_resource type="Material" uid="uid://b046nsnrcp8da" path="res://resources/particles/fire_particles_heart.tres" id="6_u18ke"]
 [ext_resource type="Material" uid="uid://dk7pw4fm0umgt" path="res://resources/particles/fire_particles_orange_sparks.tres" id="7_u522h"]
 [ext_resource type="Material" uid="uid://b8y5kxrjrqbev" path="res://resources/particles/fire_particles_white_sparks.tres" id="8_qum5x"]
-[ext_resource type="Gradient" uid="uid://vktau61mudm1" path="res://explosion_gradient.tres" id="9_6acyk"]
+[ext_resource type="Gradient" uid="uid://vktau61mudm1" path="res://assets/particles/explosion_gradient.tres" id="9_6acyk"]
 [ext_resource type="AudioStream" uid="uid://nggmtknecehn" path="res://assets/audio/explosion-close-short-gfx-sounds-1-1-00-02.mp3" id="10_vlxao"]
 [ext_resource type="AudioStream" uid="uid://d1cbouboyaiam" path="res://assets/audio/fire.wav" id="11_fmxtf"]
 
@@ -44,21 +44,6 @@ turbulence_enabled = true
 turbulence_influence_min = 0.15
 turbulence_influence_max = 0.2
 
-[sub_resource type="Animation" id="Animation_urb5p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%AudioStreamPlayer2D/../AudioStreamPlayer2D2:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [10.0]
-}
-
 [sub_resource type="Animation" id="Animation_w7edt"]
 resource_name = "attenuate fire"
 length = 10.0
@@ -76,6 +61,21 @@ tracks/0/keys = {
 "values": [10.0, 10.0, 0.0, 0.0, -15.0, -80.0]
 }
 
+[sub_resource type="Animation" id="Animation_urb5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AudioStreamPlayer2D/../AudioStreamPlayer2D2:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tbqew"]
 _data = {
 &"RESET": SubResource("Animation_urb5p"),
@@ -89,63 +89,63 @@ script = ExtResource("1_awlcx")
 [node name="BaseA" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 30
-process_material = ExtResource("1_t6fwr")
 lifetime = 4.0
 visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("1_t6fwr")
 
 [node name="BaseB" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 30
-process_material = ExtResource("3_pymuv")
 lifetime = 4.0
 visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("3_pymuv")
 
 [node name="BaseC" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 30
-process_material = ExtResource("4_yim3y")
 lifetime = 4.0
 visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("4_yim3y")
 
 [node name="Core" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 60
-process_material = ExtResource("6_u18ke")
 lifetime = 4.0
 speed_scale = 1.5
 visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("6_u18ke")
 
 [node name="MotesA" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -8)
 amount = 15
-process_material = ExtResource("5_vk26f")
 lifetime = 5.0
 visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("5_vk26f")
 
 [node name="MotesB" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 2
-process_material = ExtResource("7_u522h")
 lifetime = 4.0
 speed_scale = 1.3
 visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("7_u522h")
 
 [node name="MotesC" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 2
-process_material = ExtResource("8_qum5x")
 lifetime = 4.0
 speed_scale = 1.3
 visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("8_qum5x")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 60
-process_material = SubResource("ParticleProcessMaterial_ok7g5")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ok7g5")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
