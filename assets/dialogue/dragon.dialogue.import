@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://b2t4oj5w4spef"
+path="res://.godot/imported/dragon.dialogue-d39cf834372cf821b1078b5f108183cc.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/dragon.dialogue"
+dest_files=["res://.godot/imported/dragon.dialogue-d39cf834372cf821b1078b5f108183cc.tres"]
+
+[params]
+
+defaults=true

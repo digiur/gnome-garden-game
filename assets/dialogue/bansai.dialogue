@@ -1,0 +1,8 @@
+Bansai: [[Hi|Hello|Howdy]]. Here to buy or sell?
+- Buy
+	You buy...
+- Sell
+	You sell...
+- Nevermind => END
+Bansai: Pleasure doing business with you.
+=> END

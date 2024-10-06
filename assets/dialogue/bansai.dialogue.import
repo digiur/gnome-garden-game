@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://djjjsv4amnpic"
+path="res://.godot/imported/bansai.dialogue-3b485f24aab409b4f880e7c98a33b478.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/bansai.dialogue"
+dest_files=["res://.godot/imported/bansai.dialogue-3b485f24aab409b4f880e7c98a33b478.tres"]
+
+[params]
+
+defaults=true

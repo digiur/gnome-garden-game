@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://uniep8hu2f5k"]
+[gd_scene load_steps=14 format=3 uid="uid://uniep8hu2f5k"]
 
 [ext_resource type="PackedScene" uid="uid://bhcs54ofsg4f4" path="res://scenes/chunks/debug_chunk_a.tscn" id="1_pl3ro"]
 [ext_resource type="PackedScene" uid="uid://bn7wdw1vounbu" path="res://scenes/mobs/spawners/spawner.tscn" id="3_33pif"]
@@ -7,9 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://de5ebeoq5r0n1" path="res://scenes/props/house.tscn" id="5_ajg4d"]
 [ext_resource type="PackedScene" uid="uid://d08qsqikc146w" path="res://scenes/towers/tower.tscn" id="6_gxent"]
 [ext_resource type="Texture2D" uid="uid://dblthex3uj5vb" path="res://assets/bansai/Bonsai.png" id="6_x735d"]
+[ext_resource type="Script" path="res://scripts/dialogue_source.gd" id="7_0qr7g"]
 [ext_resource type="Texture2D" uid="uid://bjndep6u6kml4" path="res://assets/bansai/BonsaiDragonfruit.png" id="7_3qwan"]
 [ext_resource type="PackedScene" uid="uid://g57jwvslj535" path="res://scenes/towers/fire_tower.tscn" id="7_d8onh"]
+[ext_resource type="Resource" uid="uid://djjjsv4amnpic" path="res://assets/dialogue/bansai.dialogue" id="8_r3dwb"]
 [ext_resource type="AudioStream" uid="uid://5fkjpd2btnru" path="res://assets/audio/sonatina_letsadventure_6Flying.ogg" id="10_eco1d"]
+[ext_resource type="Resource" uid="uid://b2t4oj5w4spef" path="res://assets/dialogue/dragon.dialogue" id="10_n8qbc"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -72,7 +75,7 @@ position = Vector2(851, 31)
 position = Vector2(1218, 3412)
 
 [node name="Conifer11" parent="Props" instance=ExtResource("4_k087h")]
-position = Vector2(399, 3437)
+position = Vector2(332, 3437)
 
 [node name="Conifer12" parent="Props" instance=ExtResource("4_k087h")]
 position = Vector2(2663, 3159)
@@ -110,15 +113,33 @@ position = Vector2(2252, 235)
 [node name="Conifer9" parent="Props" instance=ExtResource("4_k087h")]
 position = Vector2(800, 3248)
 
-[node name="Bonsai" type="Sprite2D" parent="Props"]
-position = Vector2(384, 3648)
+[node name="BonsaiSmall" type="Sprite2D" parent="Props"]
+position = Vector2(432, 3728)
 texture = ExtResource("6_x735d")
 offset = Vector2(16, -128)
 
-[node name="BonsaiDragonfruit" type="Sprite2D" parent="Props"]
+[node name="DialogueSource" type="Area2D" parent="Props/BonsaiSmall"]
+collision_layer = 536870912
+collision_mask = 0
+script = ExtResource("7_0qr7g")
+dialog_resource = ExtResource("8_r3dwb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Props/BonsaiSmall/DialogueSource"]
+polygon = PackedVector2Array(-80, -16, -96, -48, -80, -96, -144, -112, -112, -160, -80, -176, -80, -224, 0, -240, 80, -240, 128, -192, 176, -144, 128, -96, 112, -64, 96, -16)
+
+[node name="BonsaiDragon" type="Sprite2D" parent="Props"]
 position = Vector2(880, 3568)
 texture = ExtResource("7_3qwan")
 offset = Vector2(48, -256)
+
+[node name="DialogueSource" type="Area2D" parent="Props/BonsaiDragon"]
+collision_layer = 536870912
+collision_mask = 0
+script = ExtResource("7_0qr7g")
+dialog_resource = ExtResource("10_n8qbc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Props/BonsaiDragon/DialogueSource"]
+polygon = PackedVector2Array(-64, 0, -112, -32, -128, -144, -272, -144, -336, -240, -288, -304, -160, -272, -208, -480, 368, -512, 400, -48, 160, -160, 128, -64, 80, 0)
 
 [node name="Towers" type="Node2D" parent="."]
 y_sort_enabled = true

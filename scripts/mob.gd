@@ -20,7 +20,7 @@ var _paused = false
 func _ready() -> void:
 	if !is_zero_approx(pause_period):
 		var speed_adjustment: float = (walk_period + pause_period) / walk_period
-		print("speed_adjustment: %s" % speed_adjustment)
+		# print("speed_adjustment: %s" % speed_adjustment)
 		speed *= speed_adjustment
 		_paused = true
 		var t: float = randf_range(pause_period - pause_variance, pause_period + pause_variance)
