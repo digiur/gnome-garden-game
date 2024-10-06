@@ -16,28 +16,24 @@ jobs:
 
       - name: Download Godot Engine & Templates
         run: |
-          wget -q https://downloads.tuxfamily.org/godotengine/4.4/dev2/Godot_v4.4-dev2_linux.x86_64.zip
-          wget -q https://downloads.tuxfamily.org/godotengine/4.4/dev2/Godot_v4.4-dev2_export_templates.tpz
+          wget -q https://downloads.tuxfamily.org/godotengine/4.4/dev3/Godot_v4.4-dev3_linux.x86_64.zip
+          wget -q https://downloads.tuxfamily.org/godotengine/4.4/dev3/Godot_v4.4-dev3_export_templates.tpz
 
       - name: Extract Godot Engine & Templates
         run: |
-          unzip Godot_v4.4-dev2_linux.x86_64.zip
-          unzip Godot_v4.4-dev2_export_templates.tpz
+          unzip Godot_v4.4-dev3_linux.x86_64.zip
+          unzip Godot_v4.4-dev3_export_templates.tpz
 
       - name: Remove Downloaded Zip Packages
         run: |
-          rm Godot_v4.4-dev2_linux.x86_64.zip
-          rm Godot_v4.4-dev2_export_templates.tpz
+          rm Godot_v4.4-dev3_linux.x86_64.zip
+          rm Godot_v4.4-dev3_export_templates.tpz
 
       - name: Set Up Environment
         run: |
-          mkdir -p ~/.local/share/godot/export_templates/4.4.dev2
-          mv templates/* ~/.local/share/godot/export_templates/4.4.dev2
+          mkdir -p ~/.local/share/godot/export_templates/4.4.dev3
+          mv templates/* ~/.local/share/godot/export_templates/4.4.dev3
           mkdir -p builds/html5
-
-      - name: Export Godot Project to HTML
-        run: |
-          ./Godot_v4.4-dev2_linux.x86_64 --headless --path . --export-release Web builds/html5/index.html
 
       - name: Download itch.io Butler
         run: |
@@ -46,7 +42,20 @@ jobs:
           chmod +x butler
           ./butler -V
 
-      - name: Itchio Butler Go!
+      # - name: Export Godot Project to HTML
+      #   run: |
+      #     ./Godot_v4.4-dev3_linux.x86_64 --headless --path . --export-release Web builds/html5/index.html
+
+      - name: Export Godot Project to Windows
+        run: |
+          ./Godot_v4.4-dev3_linux.x86_64 --headless --path . --export-release Windows
+
+      # - name: Itchio Butler HTML!
+      #   env:
+      #     BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
+      #   run: ./butler push builds/html5 digiur/gnome-garden-game:html5
+
+      - name: Itchio Butler Windows!
         env:
           BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
-        run: ./butler push builds/html5 digiur/gnome-garden-game:html5
+        run: ./butler push builds/windows digiur/gnome-garden-game:win
