@@ -48,7 +48,7 @@ jobs:
 
       - name: Export Godot Project to Windows
         run: |
-          ./Godot_v4.4-dev3_linux.x86_64 --headless --path . --export-release Windows
+          ./Godot_v4.4-dev3_linux.x86_64 --headless --path . --export-release Windows builds/windows/ggg.exe
 
       # - name: Itchio Butler HTML!
       #   env:
