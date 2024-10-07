@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8p3rxsirwufy"]
+[gd_scene load_steps=30 format=3 uid="uid://c8p3rxsirwufy"]
 
 [ext_resource type="Script" path="res://scripts/particles_tile.gd" id="1_awlcx"]
 [ext_resource type="Material" uid="uid://yvxvovltf6gs" path="res://resources/particles/fire_particles_orange_base.tres" id="1_t6fwr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Gradient" uid="uid://vktau61mudm1" path="res://assets/particles/explosion_gradient.tres" id="9_6acyk"]
 [ext_resource type="AudioStream" uid="uid://nggmtknecehn" path="res://assets/audio/explosion-close-short-gfx-sounds-1-1-00-02.mp3" id="10_vlxao"]
 [ext_resource type="AudioStream" uid="uid://d1cbouboyaiam" path="res://assets/audio/fire.wav" id="11_fmxtf"]
+[ext_resource type="Script" path="res://scenes/flicker_light.gd" id="12_atixi"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0efyl"]
 gradient = ExtResource("9_6acyk")
@@ -44,22 +45,26 @@ turbulence_enabled = true
 turbulence_influence_min = 0.15
 turbulence_influence_max = 0.2
 
-[sub_resource type="Animation" id="Animation_w7edt"]
-resource_name = "attenuate fire"
-length = 10.0
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%AudioStreamPlayer2D/../AudioStreamPlayer2D2:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.75, 4.5, 7.5, 8.75, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [10.0, 10.0, 0.0, 0.0, -15.0, -80.0]
-}
+[sub_resource type="Gradient" id="Gradient_knsle"]
+offsets = PackedFloat32Array(0, 0.580214)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_px1fp"]
+gradient = SubResource("Gradient_knsle")
+width = 400
+height = 400
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g0iaw"]
+frequency = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_njpr2"]
+frequency = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kj67e"]
+frequency = 1.0
 
 [sub_resource type="Animation" id="Animation_urb5p"]
 length = 0.001
@@ -76,11 +81,49 @@ tracks/0/keys = {
 "values": [10.0]
 }
 
+[sub_resource type="Animation" id="Animation_w7edt"]
+resource_name = "attenuate fire"
+length = 10.0
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AudioStreamPlayer2D/../AudioStreamPlayer2D2:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.75, 4.5, 7.5, 8.75, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [10.0, 10.0, 0.0, 0.0, -15.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AudioStreamPlayer2D/../PointLight2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tbqew"]
 _data = {
 &"RESET": SubResource("Animation_urb5p"),
 &"attenuate fire": SubResource("Animation_w7edt")
 }
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_py28e"]
+frequency = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7atw3"]
+frequency = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0uvxo"]
+frequency = 1.0
 
 [node name="ParticlesTile" type="Node2D"]
 position = Vector2(576, 528)
@@ -162,12 +205,37 @@ autoplay = true
 max_distance = 800.0
 attenuation = 2.0
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.811448, 0.490264, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_px1fp")
+texture_scale = 4.0
+height = 100.0
+script = ExtResource("12_atixi")
+energy_noise = SubResource("FastNoiseLite_g0iaw")
+x_noise = SubResource("FastNoiseLite_njpr2")
+y_noise = SubResource("FastNoiseLite_kj67e")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+active = false
 root_node = NodePath("../AudioStreamPlayer2D")
 libraries = {
 &"": SubResource("AnimationLibrary_tbqew")
 }
 autoplay = "attenuate fire"
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+color = Color(1, 0.811448, 0.490264, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_px1fp")
+texture_scale = 4.0
+height = 100.0
+script = ExtResource("12_atixi")
+energy_noise = SubResource("FastNoiseLite_py28e")
+x_noise = SubResource("FastNoiseLite_7atw3")
+y_noise = SubResource("FastNoiseLite_0uvxo")
+speed = 2.1
 
 [connection signal="finished" from="Core" to="." method="_on_core_finished"]
 [connection signal="finished" from="MotesA" to="." method="_on_motes_a_finished"]

@@ -15,59 +15,59 @@ position = Vector2(403, 294)
 [node name="OrangeBase" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 10
-process_material = ExtResource("1_slufe")
-texture = ExtResource("2_dk4kt")
 lifetime = 4.0
 visibility_rect = Rect2(-100, -350, 200, 400)
+texture = ExtResource("2_dk4kt")
+process_material = ExtResource("1_slufe")
 
 [node name="RedBase" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 10
-process_material = ExtResource("3_1td56")
-texture = ExtResource("2_dk4kt")
 lifetime = 4.0
 visibility_rect = Rect2(-100, -350, 200, 400)
+texture = ExtResource("2_dk4kt")
+process_material = ExtResource("3_1td56")
 
 [node name="YellowBase" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 10
-process_material = ExtResource("4_gtwf1")
-texture = ExtResource("2_dk4kt")
 lifetime = 4.0
 speed_scale = 1.2
 visibility_rect = Rect2(-100, -350, 200, 400)
+texture = ExtResource("2_dk4kt")
+process_material = ExtResource("4_gtwf1")
 
 [node name="Soot" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 10
-process_material = ExtResource("5_p350v")
-texture = ExtResource("2_dk4kt")
 lifetime = 3.0
 visibility_rect = Rect2(-100, -350, 200, 400)
+texture = ExtResource("2_dk4kt")
+process_material = ExtResource("5_p350v")
 
 [node name="Heart" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 10
-process_material = ExtResource("6_bon1f")
-texture = ExtResource("2_dk4kt")
 lifetime = 2.0
 speed_scale = 1.2
 visibility_rect = Rect2(-100, -350, 200, 400)
+texture = ExtResource("2_dk4kt")
+process_material = ExtResource("6_bon1f")
 
 [node name="OrangeSparks" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 3
-process_material = ExtResource("7_3385w")
-texture = ExtResource("2_dk4kt")
 lifetime = 4.5
 speed_scale = 1.3
 visibility_rect = Rect2(-100, -350, 200, 400)
+texture = ExtResource("2_dk4kt")
+process_material = ExtResource("7_3385w")
 
 [node name="WhiteSparks" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 amount = 3
-process_material = ExtResource("8_wftwa")
-texture = ExtResource("2_dk4kt")
 lifetime = 4.5
 speed_scale = 1.3
 visibility_rect = Rect2(-100, -350, 200, 400)
+texture = ExtResource("2_dk4kt")
+process_material = ExtResource("8_wftwa")
