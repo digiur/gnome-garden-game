@@ -22,6 +22,7 @@ Quickescape="*res://scripts/quick_escape.gd"
 UiBackground="*res://scenes/ui/ui_background.tscn"
 UiDebugMenu="*res://scenes/ui/ui_debug_menu.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+UiForeground="*res://scenes/ui/ui_foreground.tscn"
 
 [display]
 

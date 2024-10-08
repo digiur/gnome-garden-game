@@ -14,9 +14,9 @@ class_name ParticlesTile extends Node2D
 @onready var motes_a: GPUParticles2D = %MotesA
 @onready var motes_b: GPUParticles2D = %MotesB
 @onready var motes_c: GPUParticles2D = %MotesC
-@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = %AudioStreamPlayer2D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var explode_particles: GPUParticles2D = %ExplodeParticles
 
 func _ready() -> void:
 	restart()
@@ -36,15 +36,15 @@ func restart() -> void:
 	motes_b.one_shot = false
 	motes_c.restart()
 	motes_c.one_shot = false
-	gpu_particles_2d.restart()
-	gpu_particles_2d.one_shot = true
+	explode_particles.restart()
+	explode_particles.one_shot = true
 	
 	if one_shot:
 		stop()
 
 	if !explode:
 		audio_stream_player_2d.stop()
-		gpu_particles_2d.visible = false
+		explode_particles.visible = false
 
 func stop() -> void:
 	core.one_shot = true

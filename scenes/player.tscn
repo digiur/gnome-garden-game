@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhbbaqsp2bo6y"]
+[gd_scene load_steps=11 format=3 uid="uid://dhbbaqsp2bo6y"]
 
 [ext_resource type="Script" path="res://scripts/character_movement.gd" id="1_cpbi7"]
 [ext_resource type="Texture2D" uid="uid://cdm14hgecsegf" path="res://assets/wizards/wizard.png" id="2_4l1dt"]
 [ext_resource type="Script" path="res://scripts/debug_camera.gd" id="3_g5nj8"]
 [ext_resource type="Script" path="res://scripts/dialog_activator.gd" id="4_o21bi"]
+[ext_resource type="PackedScene" uid="uid://bxaocmyk0nahs" path="res://scenes/rain_particles.tscn" id="4_w36dl"]
 [ext_resource type="Texture2D" uid="uid://ct88q2fsqf2lt" path="res://assets/lights/2d_lights_and_shadows_neutral_point_light.webp" id="5_5d7td"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqjij"]
@@ -45,6 +46,9 @@ process_callback = 0
 position_smoothing_speed = 20.0
 script = ExtResource("3_g5nj8")
 
+[node name="Rain" parent="CollisionShape2D" instance=ExtResource("4_w36dl")]
+follow_viewport_enabled = true
+
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
 
@@ -61,10 +65,12 @@ shape = SubResource("CircleShape2D_v5tm2")
 position = Vector2(-124, -392)
 color = Color(0.199788, 0.609206, 0.999996, 1)
 shadow_enabled = true
+shadow_filter = 2
 texture = ExtResource("5_5d7td")
 
 [node name="PointLight2D" type="PointLight2D" parent="PointLight2D"]
 color = Color(1, 0.811448, 0.490264, 1)
 shadow_enabled = true
+shadow_filter = 2
 texture = SubResource("GradientTexture2D_em64q")
 texture_scale = 8.0

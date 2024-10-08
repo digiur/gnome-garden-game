@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxaocmyk0nahs"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rhiv8"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -360, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1280, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 250.0
+initial_velocity_max = 800.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 0, 1)
+
+[node name="RainParticles" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 1000
+visibility_rect = Rect2(-740, -460, 1480, 920)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_rhiv8")

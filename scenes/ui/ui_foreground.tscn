@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cne3njg6rkvw0"]
+
+[node name="Foreground" type="CanvasLayer"]
+layer = 99
