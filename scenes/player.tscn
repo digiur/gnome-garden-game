@@ -1,11 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhbbaqsp2bo6y"]
+[gd_scene load_steps=10 format=3 uid="uid://dhbbaqsp2bo6y"]
 
 [ext_resource type="Script" path="res://scripts/character_movement.gd" id="1_cpbi7"]
 [ext_resource type="Texture2D" uid="uid://cdm14hgecsegf" path="res://assets/wizards/wizard.png" id="2_4l1dt"]
 [ext_resource type="Script" path="res://scripts/debug_camera.gd" id="3_g5nj8"]
+[ext_resource type="Script" path="res://scripts/dialog_activator.gd" id="4_o21bi"]
+[ext_resource type="Texture2D" uid="uid://ct88q2fsqf2lt" path="res://assets/lights/2d_lights_and_shadows_neutral_point_light.webp" id="5_5d7td"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqjij"]
 radius = 115.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v5tm2"]
+radius = 250.0
+
+[sub_resource type="Gradient" id="Gradient_w088p"]
+offsets = PackedFloat32Array(0, 0.580214)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_em64q"]
+gradient = SubResource("Gradient_w088p")
+width = 400
+height = 400
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -27,3 +44,27 @@ scale = Vector2(4, 4)
 process_callback = 0
 position_smoothing_speed = 20.0
 script = ExtResource("3_g5nj8")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="DialogActivator" type="Area2D" parent="."]
+position = Vector2(48, -120)
+collision_layer = 0
+collision_mask = 536870912
+script = ExtResource("4_o21bi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator"]
+shape = SubResource("CircleShape2D_v5tm2")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-124, -392)
+color = Color(0.199788, 0.609206, 0.999996, 1)
+shadow_enabled = true
+texture = ExtResource("5_5d7td")
+
+[node name="PointLight2D" type="PointLight2D" parent="PointLight2D"]
+color = Color(1, 0.811448, 0.490264, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_em64q")
+texture_scale = 8.0

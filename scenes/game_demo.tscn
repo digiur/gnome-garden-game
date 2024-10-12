@@ -1,17 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://uniep8hu2f5k"]
+[gd_scene load_steps=18 format=3 uid="uid://uniep8hu2f5k"]
 
 [ext_resource type="PackedScene" uid="uid://bhcs54ofsg4f4" path="res://scenes/chunks/debug_chunk_a.tscn" id="1_pl3ro"]
 [ext_resource type="PackedScene" uid="uid://bn7wdw1vounbu" path="res://scenes/mobs/spawners/spawner.tscn" id="3_33pif"]
 [ext_resource type="PackedScene" uid="uid://dhbbaqsp2bo6y" path="res://scenes/player.tscn" id="4_2elyw"]
-[ext_resource type="PackedScene" uid="uid://d08qsqikc146w" path="res://scenes/towers/tower.tscn" id="4_u6r0y"]
+[ext_resource type="PackedScene" uid="uid://d1d7rx6v0yokh" path="res://scenes/props/conifer.tscn" id="4_k087h"]
+[ext_resource type="PackedScene" uid="uid://de5ebeoq5r0n1" path="res://scenes/props/house.tscn" id="5_ajg4d"]
+[ext_resource type="PackedScene" uid="uid://d08qsqikc146w" path="res://scenes/towers/tower.tscn" id="6_gxent"]
+[ext_resource type="Texture2D" uid="uid://dblthex3uj5vb" path="res://assets/bansai/Bonsai.png" id="6_x735d"]
+[ext_resource type="Script" path="res://scripts/dialogue_source.gd" id="7_0qr7g"]
+[ext_resource type="Texture2D" uid="uid://bjndep6u6kml4" path="res://assets/bansai/BonsaiDragonfruit.png" id="7_3qwan"]
+[ext_resource type="PackedScene" uid="uid://g57jwvslj535" path="res://scenes/towers/fire_tower.tscn" id="7_d8onh"]
+[ext_resource type="Resource" uid="uid://djjjsv4amnpic" path="res://assets/dialogue/bansai.dialogue" id="8_r3dwb"]
+[ext_resource type="AudioStream" uid="uid://5fkjpd2btnru" path="res://assets/audio/sonatina_letsadventure_6Flying.ogg" id="10_eco1d"]
+[ext_resource type="Resource" uid="uid://b2t4oj5w4spef" path="res://assets/dialogue/dragon.dialogue" id="10_n8qbc"]
+[ext_resource type="Texture2D" uid="uid://3y5kqwdryoti" path="res://assets/icons/campfire.png" id="14_1ds6x"]
+[ext_resource type="PackedScene" uid="uid://c8p3rxsirwufy" path="res://scenes/particles_tile.tscn" id="15_jiahy"]
 
-[node name="Game" type="Node"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kyau4"]
+polygon = PackedVector2Array(-83, -94, -120, -124, -163, -128, -137, -149, -177, -183, -209, -177, -220, -180, -229, -165, -245, -166, -260, -178, -278, -167, -293, -179, -339, -151, -336, -134, -304, -136, -294, -121, -305, -110, -343, -122, -356, -93, -379, -99, -388, -80, -368, -66, -364, -77, -345, -65, -293, -82, -273, -70, -260, -67, -273, -46, -280, -52, -282, -42, -341, -34, -343, -22, -350, -10, -347, 9, -329, 30, -255, 43, -183, 35, -155, -1, -154, -32, -222, -44, -235, -57, -225, -85, -202, -73, -163, -65, -145, -72, -128, -71, -111, -80, -102, -75)
 
-[node name="Chunks" type="Node" parent="."]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_u1buy"]
+polygon = PackedVector2Array(761, 3452, 797, 3440, 836, 3435, 836, 3415, 776, 3412, 728, 3394, 718, 3382, 706, 3387, 710, 3402, 698, 3418, 657, 3417, 640, 3392, 656, 3375, 713, 3376, 675, 3368, 631, 3363, 582, 3346, 568, 3324, 584, 3307, 614, 3312, 700, 3314, 710, 3351, 731, 3372, 749, 3385, 802, 3399, 861, 3393, 899, 3380, 883, 3356, 849, 3350, 826, 3315, 807, 3312, 797, 3332, 780, 3333, 771, 3317, 771, 3307, 748, 3305, 755, 3277, 697, 3225, 766, 3240, 713, 3213, 717, 3188, 735, 3179, 692, 3125, 731, 3138, 714, 3087, 766, 3125, 746, 3071, 805, 3118, 802, 3086, 822, 3100, 1051, 3080, 1212, 3088, 1178, 3390, 1044, 3379, 1020, 3409, 990, 3423, 925, 3414, 907, 3405, 871, 3425, 880, 3432, 935, 3432, 973, 3436, 1006, 3442, 1010, 3455, 1014, 3475, 1002, 3489, 1007, 3511, 990, 3547, 971, 3563, 932, 3573, 864, 3574, 808, 3572, 775, 3546, 767, 3510, 767, 3487)
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Chunks" type="Node2D" parent="."]
+z_index = -1
 
 [node name="Chunk" parent="Chunks" instance=ExtResource("1_pl3ro")]
 
-[node name="Spawners" type="Node" parent="."]
+[node name="Spawners" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Spawner" parent="Spawners" instance=ExtResource("3_33pif")]
 
@@ -21,48 +41,198 @@ position = Vector2(1776, 112)
 [node name="Spawn" parent="Spawners/Spawner" index="1"]
 position = Vector2(48, 48)
 
-[node name="Towers" type="Node" parent="."]
-
-[node name="Tower4" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(882, 38)
-
-[node name="Tower3" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1193, 401)
-
-[node name="Tower5" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1094, 33)
-
-[node name="Tower6" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1535, 218)
-
-[node name="Tower7" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(236, 297)
-
-[node name="Tower8" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(106, 520)
-
-[node name="Tower9" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(299, 882)
-
-[node name="Tower10" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(382, 887)
-
-[node name="Tower11" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(488, 887)
-
-[node name="Tower12" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(943, 966)
-
-[node name="Tower13" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1120, 801)
-
-[node name="Tower14" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(886, 504)
-
-[node name="Tower15" parent="Towers" instance=ExtResource("4_u6r0y")]
-position = Vector2(1301, 979)
+[node name="Path2D" parent="Spawners/Spawner" index="3"]
+y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("4_2elyw")]
-position = Vector2(585, 415)
+y_sort_enabled = false
+position = Vector2(880, 3680)
+
+[node name="Props" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Conifer1" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(374, 697)
+scale = Vector2(1, 1.3)
+
+[node name="Conifer2" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(-217, 1833)
+
+[node name="Conifer3" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(1350, 909)
+scale = Vector2(1, 1.25)
+
+[node name="Conifer4" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(1983, 879)
+
+[node name="Conifer5" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(-433, 604)
+
+[node name="Conifer6" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(2490, 1655)
+
+[node name="Conifer7" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(2203, 2505)
+
+[node name="Conifer8" parent="Props" instance=ExtResource("4_k087h")]
+
+[node name="House" parent="Props" instance=ExtResource("5_ajg4d")]
+position = Vector2(851, 31)
+
+[node name="Conifer10" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(1218, 3412)
+
+[node name="Conifer11" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(332, 3437)
+
+[node name="Conifer12" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(2663, 3159)
+
+[node name="Conifer13" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(-597, 2235)
+
+[node name="Conifer14" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(1703, 3270.5)
+
+[node name="Conifer15" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(75, 3275.5)
+
+[node name="Conifer16" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(836, -34)
+
+[node name="Conifer17" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(1597, 1)
+
+[node name="Conifer18" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(-965, 1336)
+
+[node name="Conifer19" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(2864, 1044)
+
+[node name="Conifer20" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(1433, 3491)
+
+[node name="Conifer21" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(180, -25)
+
+[node name="Conifer22" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(2252, 235)
+
+[node name="Conifer9" parent="Props" instance=ExtResource("4_k087h")]
+position = Vector2(800, 3248)
+
+[node name="BonsaiSmall" type="Sprite2D" parent="Props"]
+position = Vector2(432, 3728)
+texture = ExtResource("6_x735d")
+offset = Vector2(16, -128)
+
+[node name="DialogueSource" type="Area2D" parent="Props/BonsaiSmall"]
+collision_layer = 536870912
+collision_mask = 0
+script = ExtResource("7_0qr7g")
+dialog_resource = ExtResource("8_r3dwb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Props/BonsaiSmall/DialogueSource"]
+polygon = PackedVector2Array(-80, -16, -96, -48, -80, -96, -144, -112, -112, -160, -80, -176, -80, -224, 0, -240, 80, -240, 128, -192, 176, -144, 128, -96, 112, -64, 96, -16)
+
+[node name="BonsaiDragon" type="Sprite2D" parent="Props"]
+position = Vector2(880, 3568)
+texture = ExtResource("7_3qwan")
+offset = Vector2(48, -256)
+
+[node name="DialogueSource" type="Area2D" parent="Props/BonsaiDragon"]
+collision_layer = 536870912
+collision_mask = 0
+script = ExtResource("7_0qr7g")
+dialog_resource = ExtResource("10_n8qbc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Props/BonsaiDragon/DialogueSource"]
+polygon = PackedVector2Array(-64, 0, -112, -32, -128, -144, -272, -144, -336, -240, -288, -304, -160, -272, -208, -480, 368, -512, 400, -48, 160, -160, 128, -64, 80, 0)
+
+[node name="Towers" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Tower" parent="Towers" instance=ExtResource("6_gxent")]
+position = Vector2(94, 495)
+
+[node name="Tower2" parent="Towers" instance=ExtResource("6_gxent")]
+position = Vector2(386, 862)
+
+[node name="Tower3" parent="Towers" instance=ExtResource("6_gxent")]
+position = Vector2(1123, 801)
+
+[node name="Tower4" parent="Towers" instance=ExtResource("6_gxent")]
+position = Vector2(971, 973)
+
+[node name="Tower5" parent="Towers" instance=ExtResource("6_gxent")]
+position = Vector2(1547, 154)
+
+[node name="Tower6" parent="Towers" instance=ExtResource("6_gxent")]
+position = Vector2(1769, 442)
+
+[node name="Tower9" parent="Towers" instance=ExtResource("7_d8onh")]
+position = Vector2(519, 190)
+
+[node name="Tower10" parent="Towers" instance=ExtResource("7_d8onh")]
+y_sort_enabled = false
+position = Vector2(710, 555)
+
+[node name="Tower11" parent="Towers" instance=ExtResource("7_d8onh")]
+y_sort_enabled = false
+position = Vector2(602, 705)
+
+[node name="Tower12" parent="Towers" instance=ExtResource("7_d8onh")]
+y_sort_enabled = false
+position = Vector2(922, 385)
+
+[node name="Tower13" parent="Towers" instance=ExtResource("7_d8onh")]
+y_sort_enabled = false
+position = Vector2(1774, 111)
+
+[node name="Tower14" parent="Towers" instance=ExtResource("7_d8onh")]
+position = Vector2(833, 75)
+
+[node name="Tower15" parent="Towers" instance=ExtResource("7_d8onh")]
+position = Vector2(1134, 169)
+
+[node name="Tower16" parent="Towers" instance=ExtResource("7_d8onh")]
+y_sort_enabled = false
+position = Vector2(511, 388)
+
+[node name="Tower17" parent="Towers" instance=ExtResource("7_d8onh")]
+y_sort_enabled = false
+position = Vector2(1208, 550)
+
+[node name="Tower18" parent="Towers" instance=ExtResource("7_d8onh")]
+y_sort_enabled = false
+position = Vector2(984, 634)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(656, 3616)
+stream = ExtResource("10_eco1d")
+autoplay = true
+max_distance = 3000.0
+attenuation = 2.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.210978, 0.169181, 0.409628, 1)
+
+[node name="Campfire" type="Sprite2D" parent="."]
+position = Vector2(688, 3680)
+texture = ExtResource("14_1ds6x")
+
+[node name="ParticlesTile" parent="Campfire" instance=ExtResource("15_jiahy")]
+position = Vector2(0, -16)
+explode = false
+one_shot = false
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Campfire"]
+z_index = 10
+occluder = SubResource("OccluderPolygon2D_kyau4")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Campfire"]
+z_index = 10
+position = Vector2(-688, -3680)
+occluder = SubResource("OccluderPolygon2D_u1buy")
 
 [editable path="Spawners/Spawner"]

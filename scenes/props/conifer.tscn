@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1d7rx6v0yokh"]
+
+[ext_resource type="Texture2D" uid="uid://cji00ndww6sd3" path="res://assets/environments/miscellany/conifer1.png" id="1_xfl7c"]
+
+[node name="Conifer1" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_xfl7c")
+offset = Vector2(0, -1250)

@@ -1,30 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://cac373cas334y"]
+[gd_scene load_steps=13 format=3 uid="uid://cac373cas334y"]
 
 [ext_resource type="Script" path="res://scripts/grid_background.gd" id="1_001ow"]
-[ext_resource type="Texture2D" uid="uid://c8684ae6sl34f" path="res://assets/environments/hierachry-grid.png" id="2_y7pgd"]
 [ext_resource type="Script" path="res://scripts/center_to_rect.gd" id="3_pplrp"]
 [ext_resource type="Script" path="res://scripts/resize_to_rect.gd" id="4_34bmb"]
+[ext_resource type="Texture2D" uid="uid://y82x7j5ygiv1" path="res://assets/backgrounds/clickable.png" id="4_uw6qc"]
+[ext_resource type="Texture2D" uid="uid://61xxw6fritbu" path="res://assets/backgrounds/space_background.png" id="5_8ikrb"]
+[ext_resource type="Texture2D" uid="uid://djdayl2v2k4eg" path="res://assets/backgrounds/Clouds 8/1.png" id="6_cmskh"]
+[ext_resource type="Texture2D" uid="uid://1qtdle2daur2" path="res://assets/backgrounds/Clouds 8/2.png" id="7_7g26a"]
+[ext_resource type="Texture2D" uid="uid://70kdg21dt7dh" path="res://assets/backgrounds/Clouds 8/3.png" id="8_75nfp"]
+[ext_resource type="Texture2D" uid="uid://c6j7r8trlhwul" path="res://assets/backgrounds/Clouds 8/4.png" id="9_4rblh"]
+[ext_resource type="Texture2D" uid="uid://ceonfuwi3oga7" path="res://assets/backgrounds/Clouds 8/5.png" id="10_2bqsb"]
+[ext_resource type="Texture2D" uid="uid://ba4nii1fj3v8d" path="res://assets/backgrounds/Clouds 8/6.png" id="11_bhlrg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43j5k"]
 size = Vector2(1280, 720)
 
 [node name="Background" type="CanvasLayer"]
 layer = -99
+follow_viewport_scale = 1.5
 script = ExtResource("1_001ow")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-unique_name_in_owner = true
-light_mask = 513
-texture_filter = 1
-texture_repeat = 2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_y7pgd")
-expand_mode = 1
-stretch_mode = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -38,5 +32,97 @@ unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_43j5k")
 debug_color = Color(0, 0.345098, 0.0392157, 0.701961)
 script = ExtResource("4_34bmb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+unique_name_in_owner = true
+light_mask = 513
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("4_uw6qc")
+stretch_mode = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(-3, 1)
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("5_8ikrb")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+visible = false
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(-3, 1)
+follow_viewport = false
+
+[node name="1" type="Sprite2D" parent="Parallax2D2"]
+scale = Vector2(5.208, 5.208)
+texture = ExtResource("6_cmskh")
+
+[node name="2" type="Sprite2D" parent="Parallax2D2"]
+scale = Vector2(5.208, 5.208)
+texture = ExtResource("7_7g26a")
+
+[node name="3" type="Sprite2D" parent="Parallax2D2"]
+scale = Vector2(5.208, 5.208)
+texture = ExtResource("8_75nfp")
+
+[node name="4" type="Sprite2D" parent="Parallax2D2"]
+scale = Vector2(5.208, 5.208)
+texture = ExtResource("9_4rblh")
+
+[node name="5" type="Sprite2D" parent="Parallax2D2"]
+scale = Vector2(5.208, 5.208)
+texture = ExtResource("10_2bqsb")
+
+[node name="6" type="Sprite2D" parent="Parallax2D2"]
+scale = Vector2(5.208, 5.208)
+texture = ExtResource("11_bhlrg")
+
+[node name="7" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(0, 1687.39)
+scale = Vector2(5.208, 5.208)
+texture = ExtResource("6_cmskh")
+flip_v = true
+
+[node name="8" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(0, 1687.39)
+scale = Vector2(5.208, 5.208)
+texture = ExtResource("7_7g26a")
+flip_v = true
+
+[node name="9" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(0, 1687.39)
+scale = Vector2(5.208, 5.208)
+texture = ExtResource("8_75nfp")
+flip_v = true
+
+[node name="10" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(0, 1687.39)
+scale = Vector2(5.208, 5.208)
+texture = ExtResource("9_4rblh")
+flip_v = true
+
+[node name="11" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(0, 1687.39)
+scale = Vector2(5.208, 5.208)
+texture = ExtResource("10_2bqsb")
+flip_v = true
+
+[node name="12" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(0, 1687.39)
+scale = Vector2(5.208, 5.208)
+texture = ExtResource("11_bhlrg")
+flip_v = true
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

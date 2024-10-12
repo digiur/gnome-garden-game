@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://g57jwvslj535"]
+
+[ext_resource type="Script" path="res://scripts/tower.gd" id="1_00uha"]
+[ext_resource type="Texture2D" uid="uid://c45ncw5eyxcpv" path="res://assets/towers/plant_arrowroot.png" id="2_66eem"]
+[ext_resource type="Script" path="res://scripts/targeting_area.gd" id="3_ax50p"]
+[ext_resource type="Script" path="res://scripts/cooldown_attack.gd" id="4_71gqi"]
+[ext_resource type="Script" path="res://scripts/attack.gd" id="5_84j6u"]
+[ext_resource type="PackedScene" uid="uid://c8p3rxsirwufy" path="res://scenes/particles_tile.tscn" id="6_j14at"]
+[ext_resource type="Script" path="res://scripts/targeting_line.gd" id="7_piifd"]
+[ext_resource type="AudioStream" uid="uid://nggmtknecehn" path="res://assets/audio/explosion-close-short-gfx-sounds-1-1-00-02.mp3" id="8_msta5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iripf"]
+radius = 200.0
+
+[sub_resource type="Resource" id="Resource_x8vsq"]
+script = ExtResource("5_84j6u")
+_power = 200
+_variance = 50
+
+[sub_resource type="Gradient" id="Gradient_v8qpt"]
+colors = PackedColorArray(0.392157, 0, 0, 1, 1, 0, 0, 1)
+
+[node name="Tower" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_00uha")
+
+[node name="MainSprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+y_sort_enabled = true
+position = Vector2(0, -44)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_66eem")
+
+[node name="TargetingRange" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+y_sort_enabled = true
+collision_layer = 128
+collision_mask = 2048
+script = ExtResource("3_ax50p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetingRange"]
+y_sort_enabled = true
+shape = SubResource("CircleShape2D_iripf")
+
+[node name="CooldownAttack" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 10.0
+one_shot = true
+autostart = true
+script = ExtResource("4_71gqi")
+attack = SubResource("Resource_x8vsq")
+effect = ExtResource("6_j14at")
+
+[node name="TargetingLine" type="Line2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+y_sort_enabled = true
+points = PackedVector2Array(0, 0, 0, 0)
+width = 12.0
+gradient = SubResource("Gradient_v8qpt")
+texture_mode = 2
+script = ExtResource("7_piifd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_msta5")
+volume_db = -80.0
+max_distance = 1200.0
+attenuation = 2.0
+
+[connection signal="area_entered" from="TargetingRange" to="TargetingRange" method="_on_area_entered"]
+[connection signal="area_exited" from="TargetingRange" to="TargetingRange" method="_on_area_exited"]

@@ -1,0 +1,241 @@
+[gd_scene load_steps=30 format=3 uid="uid://c8p3rxsirwufy"]
+
+[ext_resource type="Script" path="res://scripts/particles_tile.gd" id="1_awlcx"]
+[ext_resource type="Material" uid="uid://yvxvovltf6gs" path="res://resources/particles/fire_particles_orange_base.tres" id="1_t6fwr"]
+[ext_resource type="Material" uid="uid://dkq0ykml6jdbf" path="res://resources/particles/fire_particles_red_base.tres" id="3_pymuv"]
+[ext_resource type="Material" uid="uid://w02lm1fk6xcn" path="res://resources/particles/fire_particles_yellow_base.tres" id="4_yim3y"]
+[ext_resource type="Material" uid="uid://dls1j1j7i4ujg" path="res://resources/particles/fire_particles_soot.tres" id="5_vk26f"]
+[ext_resource type="Material" uid="uid://b046nsnrcp8da" path="res://resources/particles/fire_particles_heart.tres" id="6_u18ke"]
+[ext_resource type="Material" uid="uid://dk7pw4fm0umgt" path="res://resources/particles/fire_particles_orange_sparks.tres" id="7_u522h"]
+[ext_resource type="Material" uid="uid://b8y5kxrjrqbev" path="res://resources/particles/fire_particles_white_sparks.tres" id="8_qum5x"]
+[ext_resource type="Gradient" uid="uid://vktau61mudm1" path="res://assets/particles/explosion_gradient.tres" id="9_6acyk"]
+[ext_resource type="AudioStream" uid="uid://nggmtknecehn" path="res://assets/audio/explosion-close-short-gfx-sounds-1-1-00-02.mp3" id="10_vlxao"]
+[ext_resource type="AudioStream" uid="uid://d1cbouboyaiam" path="res://assets/audio/fire.wav" id="11_fmxtf"]
+[ext_resource type="Script" path="res://scenes/flicker_light.gd" id="12_atixi"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0efyl"]
+gradient = ExtResource("9_6acyk")
+
+[sub_resource type="Gradient" id="Gradient_v6xmg"]
+offsets = PackedFloat32Array(0, 0.567196, 0.807407)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3mgf8"]
+gradient = SubResource("Gradient_v6xmg")
+
+[sub_resource type="Curve" id="Curve_6aiau"]
+_data = [Vector2(1e-05, 1), 0.0, -3.01647, 0, 0, Vector2(1, 0), -3.18174, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_utyx0"]
+curve = SubResource("Curve_6aiau")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ok7g5"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 250.0
+initial_velocity_max = 350.0
+gravity = Vector3(0, -400, 0)
+scale_min = 16.0
+scale_max = 16.0
+scale_curve = SubResource("CurveTexture_utyx0")
+color_ramp = SubResource("GradientTexture1D_3mgf8")
+color_initial_ramp = SubResource("GradientTexture1D_0efyl")
+turbulence_enabled = true
+turbulence_influence_min = 0.15
+turbulence_influence_max = 0.2
+
+[sub_resource type="Gradient" id="Gradient_knsle"]
+offsets = PackedFloat32Array(0, 0.580214)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_px1fp"]
+gradient = SubResource("Gradient_knsle")
+width = 400
+height = 400
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g0iaw"]
+frequency = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_njpr2"]
+frequency = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kj67e"]
+frequency = 1.0
+
+[sub_resource type="Animation" id="Animation_urb5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AudioStreamPlayer2D/../AudioStreamPlayer2D2:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+
+[sub_resource type="Animation" id="Animation_w7edt"]
+resource_name = "attenuate fire"
+length = 10.0
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AudioStreamPlayer2D/../AudioStreamPlayer2D2:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.75, 4.5, 7.5, 8.75, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [10.0, 10.0, 0.0, 0.0, -15.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AudioStreamPlayer2D/../PointLight2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tbqew"]
+_data = {
+&"RESET": SubResource("Animation_urb5p"),
+&"attenuate fire": SubResource("Animation_w7edt")
+}
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_py28e"]
+frequency = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7atw3"]
+frequency = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0uvxo"]
+frequency = 1.0
+
+[node name="ParticlesTile" type="Node2D"]
+position = Vector2(576, 528)
+script = ExtResource("1_awlcx")
+
+[node name="BaseA" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 30
+lifetime = 4.0
+visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("1_t6fwr")
+
+[node name="BaseB" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 30
+lifetime = 4.0
+visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("3_pymuv")
+
+[node name="BaseC" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 30
+lifetime = 4.0
+visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("4_yim3y")
+
+[node name="Core" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 60
+lifetime = 4.0
+speed_scale = 1.5
+visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("6_u18ke")
+
+[node name="MotesA" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+amount = 15
+lifetime = 5.0
+visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("5_vk26f")
+
+[node name="MotesB" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 2
+lifetime = 4.0
+speed_scale = 1.3
+visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("7_u522h")
+
+[node name="MotesC" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 2
+lifetime = 4.0
+speed_scale = 1.3
+visibility_rect = Rect2(-100, -350, 200, 400)
+process_material = ExtResource("8_qum5x")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 60
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ok7g5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("10_vlxao")
+volume_db = -5.0
+autoplay = true
+max_distance = 1200.0
+attenuation = 2.0
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_fmxtf")
+volume_db = 10.0
+autoplay = true
+max_distance = 800.0
+attenuation = 2.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.811448, 0.490264, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_px1fp")
+texture_scale = 4.0
+height = 100.0
+script = ExtResource("12_atixi")
+energy_noise = SubResource("FastNoiseLite_g0iaw")
+x_noise = SubResource("FastNoiseLite_njpr2")
+y_noise = SubResource("FastNoiseLite_kj67e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+active = false
+root_node = NodePath("../AudioStreamPlayer2D")
+libraries = {
+&"": SubResource("AnimationLibrary_tbqew")
+}
+autoplay = "attenuate fire"
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+color = Color(1, 0.811448, 0.490264, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_px1fp")
+texture_scale = 4.0
+height = 100.0
+script = ExtResource("12_atixi")
+energy_noise = SubResource("FastNoiseLite_py28e")
+x_noise = SubResource("FastNoiseLite_7atw3")
+y_noise = SubResource("FastNoiseLite_0uvxo")
+speed = 2.1
+
+[connection signal="finished" from="Core" to="." method="_on_core_finished"]
+[connection signal="finished" from="MotesA" to="." method="_on_motes_a_finished"]

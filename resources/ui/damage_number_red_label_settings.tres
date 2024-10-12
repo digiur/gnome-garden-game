@@ -1,9 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://rhhuyfbfh5il"]
-
-[ext_resource type="FontFile" uid="uid://b0unfc1c4q05t" path="res://assets/fonts/vermin_vibes_1989.ttf" id="1_1wt4w"]
-
-[resource]
-font = ExtResource("1_1wt4w")
-font_color = Color(0.588235, 0, 0, 1)
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)

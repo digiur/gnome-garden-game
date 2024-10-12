@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d08qsqikc146w"]
+[gd_scene load_steps=11 format=3 uid="uid://d08qsqikc146w"]
 
 [ext_resource type="Script" path="res://scripts/tower.gd" id="1_8fl8w"]
 [ext_resource type="Texture2D" uid="uid://c45ncw5eyxcpv" path="res://assets/towers/plant_arrowroot.png" id="3_m76kp"]
@@ -7,45 +7,60 @@
 [ext_resource type="Script" path="res://scripts/attack.gd" id="5_ueqju"]
 [ext_resource type="Texture2D" uid="uid://dfopnm4qu001w" path="res://assets/attacks/attack_plant_arrowroot.png" id="6_i66pn"]
 [ext_resource type="Script" path="res://scripts/targeting_line.gd" id="7_pjxyc"]
+[ext_resource type="AudioStream" uid="uid://cm57m2vww30nr" path="res://assets/audio/bullwhip-snapping-epic-stock-media-1-00-00.mp3" id="8_68wl4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iripf"]
 radius = 200.0
 
-[sub_resource type="Resource" id="Resource_ogmte"]
+[sub_resource type="Resource" id="Resource_wkx7x"]
 script = ExtResource("5_ueqju")
-_power = 10
-_variance = 3
+_power = 50
+_variance = 25
 
 [node name="Tower" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_8fl8w")
 
 [node name="MainSprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -44)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_m76kp")
 
 [node name="TargetingRange" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
+y_sort_enabled = true
 collision_layer = 128
 collision_mask = 2048
 script = ExtResource("3_nu84b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetingRange"]
+y_sort_enabled = true
 shape = SubResource("CircleShape2D_iripf")
 
-[node name="CooldownAttack" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-autostart = true
-script = ExtResource("3_o33u1")
-attack = SubResource("Resource_ogmte")
-
 [node name="TargetingLine" type="Line2D" parent="."]
+y_sort_enabled = true
 points = PackedVector2Array(0, 0, 0, 0)
 width = 20.0
 texture = ExtResource("6_i66pn")
 texture_mode = 2
 script = ExtResource("7_pjxyc")
+
+[node name="CooldownAttack" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.75
+one_shot = true
+autostart = true
+script = ExtResource("3_o33u1")
+attack = SubResource("Resource_wkx7x")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_68wl4")
+volume_db = -5.0
+max_distance = 1000.0
+attenuation = 2.0
 
 [connection signal="area_entered" from="TargetingRange" to="TargetingRange" method="_on_area_entered"]
 [connection signal="area_exited" from="TargetingRange" to="TargetingRange" method="_on_area_exited"]
