@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://cac373cas334y"]
 
-[ext_resource type="Script" path="res://scripts/grid_background.gd" id="1_001ow"]
-[ext_resource type="Script" path="res://scripts/center_to_rect.gd" id="3_pplrp"]
-[ext_resource type="Script" path="res://scripts/resize_to_rect.gd" id="4_34bmb"]
+[ext_resource type="Script" uid="uid://ourc2wg0tufs" path="res://scripts/grid_background.gd" id="1_001ow"]
+[ext_resource type="Script" uid="uid://e8j6wmjb67to" path="res://scripts/center_to_rect.gd" id="3_pplrp"]
+[ext_resource type="Script" uid="uid://dybgcaviccgr5" path="res://scripts/resize_to_rect.gd" id="4_34bmb"]
 [ext_resource type="Texture2D" uid="uid://y82x7j5ygiv1" path="res://assets/backgrounds/clickable.png" id="4_uw6qc"]
 [ext_resource type="Texture2D" uid="uid://61xxw6fritbu" path="res://assets/backgrounds/space_background.png" id="5_8ikrb"]
 [ext_resource type="Texture2D" uid="uid://djdayl2v2k4eg" path="res://assets/backgrounds/Clouds 8/1.png" id="6_cmskh"]

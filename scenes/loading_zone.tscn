@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bleokpqu5px7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yw4af"]
+
+[node name="Zone" type="Area2D"]
+
+[node name="exit" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yw4af")
+
+[node name="entrance" type="Marker2D" parent="."]

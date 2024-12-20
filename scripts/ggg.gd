@@ -23,3 +23,7 @@ static func easy_rect(a: Vector2i, b: Vector2i) -> Rect2i:
 	return rect
 
 static var global_counter: Counter = Counter.new("global")
+
+# Secret Forest
+enum Dir { N, S, E, W }
+static var forestHistory: Array[Dir] = []

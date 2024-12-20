@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://dhbbaqsp2bo6y"]
 
-[ext_resource type="Script" path="res://scripts/character_movement.gd" id="1_cpbi7"]
+[ext_resource type="Script" uid="uid://caqacc3vf07nd" path="res://scripts/character_movement.gd" id="1_cpbi7"]
 [ext_resource type="Texture2D" uid="uid://cdm14hgecsegf" path="res://assets/wizards/wizard.png" id="2_4l1dt"]
-[ext_resource type="Script" path="res://scripts/debug_camera.gd" id="3_g5nj8"]
-[ext_resource type="Script" path="res://scripts/dialog_activator.gd" id="4_o21bi"]
+[ext_resource type="Script" uid="uid://dmfjnwj7h5upx" path="res://scripts/debug_camera.gd" id="3_g5nj8"]
+[ext_resource type="Script" uid="uid://b6vlhltl74i2r" path="res://scripts/dialog_activator.gd" id="4_o21bi"]
 [ext_resource type="Texture2D" uid="uid://ct88q2fsqf2lt" path="res://assets/lights/2d_lights_and_shadows_neutral_point_light.webp" id="5_5d7td"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqjij"]

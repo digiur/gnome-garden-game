@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://c8p3rxsirwufy"]
 
-[ext_resource type="Script" path="res://scripts/particles_tile.gd" id="1_awlcx"]
+[ext_resource type="Script" uid="uid://dhcirkde4ev1j" path="res://scripts/particles_tile.gd" id="1_awlcx"]
 [ext_resource type="Material" uid="uid://yvxvovltf6gs" path="res://resources/particles/fire_particles_orange_base.tres" id="1_t6fwr"]
 [ext_resource type="Material" uid="uid://dkq0ykml6jdbf" path="res://resources/particles/fire_particles_red_base.tres" id="3_pymuv"]
 [ext_resource type="Material" uid="uid://w02lm1fk6xcn" path="res://resources/particles/fire_particles_yellow_base.tres" id="4_yim3y"]
@@ -11,7 +11,7 @@
 [ext_resource type="Gradient" uid="uid://vktau61mudm1" path="res://assets/particles/explosion_gradient.tres" id="9_6acyk"]
 [ext_resource type="AudioStream" uid="uid://nggmtknecehn" path="res://assets/audio/explosion-close-short-gfx-sounds-1-1-00-02.mp3" id="10_vlxao"]
 [ext_resource type="AudioStream" uid="uid://d1cbouboyaiam" path="res://assets/audio/fire.wav" id="11_fmxtf"]
-[ext_resource type="Script" path="res://scenes/flicker_light.gd" id="12_atixi"]
+[ext_resource type="Script" uid="uid://bsiyvwyxiugu6" path="res://scenes/flicker_light.gd" id="12_atixi"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0efyl"]
 gradient = ExtResource("9_6acyk")
@@ -112,8 +112,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tbqew"]
 _data = {
-&"RESET": SubResource("Animation_urb5p"),
-&"attenuate fire": SubResource("Animation_w7edt")
+&"attenuate fire": SubResource("Animation_w7edt"),
+&"RESET": SubResource("Animation_urb5p")
 }
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_py28e"]
