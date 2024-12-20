@@ -16,23 +16,23 @@ jobs:
 
       - name: Download Godot Engine & Templates
         run: |
-          wget -q https://downloads.tuxfamily.org/godotengine/4.4/dev3/Godot_v4.4-dev3_linux.x86_64.zip
-          wget -q https://downloads.tuxfamily.org/godotengine/4.4/dev3/Godot_v4.4-dev3_export_templates.tpz
+          wget -q https://downloads.tuxfamily.org/godotengine/4.4/dev7/Godot_v4.4-dev7_linux.x86_64.zip
+          wget -q https://downloads.tuxfamily.org/godotengine/4.4/dev7/Godot_v4.4-dev7_export_templates.tpz
 
       - name: Extract Godot Engine & Templates
         run: |
-          unzip Godot_v4.4-dev3_linux.x86_64.zip
-          unzip Godot_v4.4-dev3_export_templates.tpz
+          unzip Godot_v4.4-dev7_linux.x86_64.zip
+          unzip Godot_v4.4-dev7_export_templates.tpz
 
       - name: Remove Downloaded Zip Packages
         run: |
-          rm Godot_v4.4-dev3_linux.x86_64.zip
-          rm Godot_v4.4-dev3_export_templates.tpz
+          rm Godot_v4.4-dev7_linux.x86_64.zip
+          rm Godot_v4.4-dev7_export_templates.tpz
 
       - name: Set Up Environment
         run: |
-          mkdir -p ~/.local/share/godot/export_templates/4.4.dev3
-          mv templates/* ~/.local/share/godot/export_templates/4.4.dev3
+          mkdir -p ~/.local/share/godot/export_templates/4.4.dev7
+          mv templates/* ~/.local/share/godot/export_templates/4.4.dev7
           mkdir -p builds/windows
 
       - name: Download itch.io Butler
@@ -48,7 +48,7 @@ jobs:
 
       - name: Export Godot Project to Windows
         run: |
-          ./Godot_v4.4-dev3_linux.x86_64 --headless --path . --export-release Windows builds/windows/ggg.exe
+          ./Godot_v4.4-dev7_linux.x86_64 --headless --path . --export-release Windows builds/windows/ggg.exe
 
       # - name: Itchio Butler HTML!
       #   env:
