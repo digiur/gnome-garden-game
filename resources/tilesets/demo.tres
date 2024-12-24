@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://b3ykhxf4b11qm"]
+[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://b3ykhxf4b11qm"]
 
 [ext_resource type="Texture2D" uid="uid://c8684ae6sl34f" path="res://assets/environments/hierachry-grid.png" id="1_00adi"]
 [ext_resource type="Texture2D" uid="uid://cn728bx08qmaf" path="res://assets/environments/ruins/grass-light-transp.png" id="2_owusv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c661tumdv74b5" path="res://assets/environments/mustard.png" id="6_aici6"]
 [ext_resource type="Texture2D" uid="uid://d3k5qa84oxrm7" path="res://assets/environments/ruins/full_tile_water.png" id="7_uxchl"]
 [ext_resource type="Texture2D" uid="uid://bkqh25hajmo5p" path="res://assets/environments/path_border_tileset.png" id="8_4hcdh"]
+[ext_resource type="Texture2D" uid="uid://c6p5jm6lyeu3r" path="res://assets/environments/gravel_tileset.png" id="9_irgm1"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_rl76n"]
 tile_data = PackedInt32Array(0, 4, 7, 65536, 4, 9, 1, 196612, 6, 65537, 262148, 9)
@@ -4775,6 +4776,26 @@ texture_region_size = Vector2i(32, 32)
 1:5/0 = 0
 0:6/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6ith"]
+texture = ExtResource("9_irgm1")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 64
@@ -4796,5 +4817,6 @@ sources/0 = SubResource("TileSetAtlasSource_opu3i")
 sources/5 = SubResource("TileSetAtlasSource_xqhte")
 sources/6 = SubResource("TileSetAtlasSource_w02w6")
 sources/7 = SubResource("TileSetAtlasSource_irgm1")
+sources/8 = SubResource("TileSetAtlasSource_y6ith")
 pattern_0 = SubResource("TileMapPattern_rl76n")
 pattern_1 = SubResource("TileMapPattern_jhwvl")
